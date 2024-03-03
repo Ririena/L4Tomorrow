@@ -1,0 +1,35 @@
+# Set to true to keep indentation with spaces. Set to false to use tabs.
+indent_style = space
+
+# Number of spaces used for each level of indentation.
+indent_size = 2
+
+# Set to true to remove trailing whitespace characters on save.
+trim_trailing_whitespace = true
+
+# Set to true to ensure a newline at the end of every file.
+insert_final_newline = true
+
+# Set to true to trim any whitespace characters automatically when saving a file.
+trim_trailing_whitespace = true
+
+# Set to true to insert spaces when pressing tab.
+insert_spaces = true
+
+# List of file extensions which should be considered as TypeScript.
+[*.js]
+
+# Set the tab size to 2 spaces.
+indent_size = 2
+
+# List of file extensions which should be considered as TypeScript React.
+[*.jsx]
+
+# Set the tab size to 2 spaces.
+indent_size = 2
+
+# List of file extensions which should be considered as JSON.
+[*.json]
+
+# Set the tab size to 2 spaces.
+indent_size = 2
