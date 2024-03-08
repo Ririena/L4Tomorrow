@@ -9,10 +9,29 @@ export default {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        evergarden: {
+          50: ""
+        }
+      }
+    },
   },
   darkMode: "class",
-  plugins: [nextui(), addVariableForColors],
+  plugins: [nextui({
+    themes: {
+      light: {
+        colors: {
+          primary: {
+            DEFAULT: "#d01be0",
+            foreground: "#fff",
+
+          },
+          focus: "#9e25a8",
+        }
+      }
+    }
+  }), addVariableForColors],
 }
 
 
