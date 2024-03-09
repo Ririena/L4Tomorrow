@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { supabase } from "../utils/supabase";
 
 export default function Url() {
+  const [gambar, setGambar] = useState(null)
   const [url, setUrl] = useState(null);
   let { urlId } = useParams();
 
