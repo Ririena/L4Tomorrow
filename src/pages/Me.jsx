@@ -6,12 +6,13 @@ export default function Me() {
   return (
     <>
       {/* RETRIEVE USER*/}
-      <LayoutsUser />
       <main>
         <section>
           <div>
+          <LayoutsUser/>
           <MainCard/>
-            <RetrieveUser />
+          
+            <RetrieveUser/>
           </div>
         </section>
       </main>

@@ -6,6 +6,7 @@ import LayoutsUser from "./components/Layout/LayoutsUser";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import Me from "./pages/Me";
+import Mail from "./pages/Mail"
 import Url from "./pages/Url";
 
 export default function App() {
@@ -16,6 +17,7 @@ export default function App() {
       <Route path="/me" element={<Me />} />
       <Route path="/" element={<Home />} />
       <Route path="/message/:urlId" element={<Url />} />
+      <Route path="/me/mail" element={<Mail/>}/>
     </Routes>
   );
 }
