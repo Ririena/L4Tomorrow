@@ -1,18 +1,35 @@
 import { supabase } from "../../utils/supabase";
 import { useState, useEffect } from "react";
-import { Button, Input, Card, CardBody, CardHeader, CardFooter } from "@nextui-org/react";
+import {
+  Button,
+  Input,
+  Card,
+  CardBody,
+  CardHeader,
+  CardFooter,
+  Snippet,
+  Divider,
+  Link,
+  Spacer,
+} from "@nextui-org/react";
 import { useNavigate } from "react-router-dom";
+
+import { WhatsappShareButton } from "react-share";
+
 export default function RetrieveUser() {
   const [userEmail, setUserEmail] = useState(null);
   const [newUserName, setNewUserName] = useState(""); // Tambahkan state untuk menyimpan nama user baru
   const [existingUserName, setExistingUserName] = useState(""); // Tambahkan state untuk menyimpan nama user yang sudah ada
   const [isLoading, setIsLoading] = useState(true);
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const { data: { user }, error } = await supabase.auth.getUser();
+        const {
+          data: { user },
+          error,
+        } = await supabase.auth.getUser();
         if (error) {
           console.error(error.message);
         } else {
@@ -53,16 +70,16 @@ export default function RetrieveUser() {
       }
 
       // Jika pengguna belum memiliki nama, tambahkan data baru ke database
-      const { data, error } = await supabase.from("user").insert([
-        { email: userEmail, nama_user: newUserName },
-      ]);
+      const { data, error } = await supabase
+        .from("user")
+        .insert([{ email: userEmail, nama_user: newUserName }]);
       if (error) {
         console.error(error.message);
       } else {
         console.log("Data added successfully:", data);
         // Set newUserName kembali ke string kosong setelah berhasil menambahkan data
         setNewUserName("");
-        navigate('/')
+        navigate("/");
       }
     } catch (error) {
       console.error(error.message);
@@ -78,39 +95,95 @@ export default function RetrieveUser() {
   if (!existingUserName) {
     return (
       <main>
-      <section>
-        <div className="max-w-[300px] mx-auto">
-          <Card shadow color="secondary">
-            <CardBody>
-              <Input
-                type="text"
-                placeholder="Nama User"
-                value={newUserName}
-                onChange={(e) => setNewUserName(e.target.value)}
-                className="mb-4"
-                color="secondary"
-              />
-              <Button
-                onClick={handleAddData}
-                color="secondary"
-                variant="shadow"
-              >
-                Tambah Data
-              </Button>
-            </CardBody>
-          </Card>
-        </div>
-      </section>
-    </main>
+        <section>
+          <div className="max-w-[300px] mx-auto">
+            <Card shadow color="secondary">
+              <CardBody>
+                <Input
+                  type="text"
+                  placeholder="Nama User"
+                  value={newUserName}
+                  onChange={(e) => setNewUserName(e.target.value)}
+                  className="mb-4"
+                  color="secondary"
+                />
+                <Button
+                  onClick={handleAddData}
+                  color="secondary"
+                  variant="shadow"
+                >
+                  Tambah Data
+                </Button>
+              </CardBody>
+            </Card>
+          </div>
+        </section>
+      </main>
     );
   }
 
   // Kondisi jika nama sudah ada, tampilkan pesan bahwa nama sudah ada
   return (
-    <main>
+    <main className="pb-28">
       <section>
-        <div className="flex flex-col items-center justify-center h-screen">
+        <div className="">
           <p>Nama sudah ada: {existingUserName}</p>
+          <section className="flex justify-center items-center">
+            <div className="max-w-md w-full">
+              <Card className="rounded-lg overflow-hidden">
+                <CardHeader>
+                  <section className="mx-auto font-semibold">
+                    <h1 className="text-xl">Step 1: Copy Your Link</h1>
+                  </section>
+                </CardHeader>
+                <CardBody>
+                  <div className="mx-auto text-md">
+                    <section>L4TOMO/message/jaisy.vercel.app</section>
+                  </div>
+                </CardBody>
+                <CardFooter>
+                  <div className="mx-auto">
+                    <Snippet>{`/L4TOMO/message/${existingUserName}.vercel.app`}</Snippet>
+                  </div>
+                </CardFooter>
+              </Card>
+
+              <Spacer y={4} />
+
+              <Card className="rounded-lg overflow-hidden">
+                <CardHeader>
+                  <div className="mx-auto">
+                    <h1 className="text-xl">
+                      Step 2: Share Link On Your Story
+                    </h1>
+                  </div>
+                </CardHeader>
+                <CardBody>
+                  <div className="mx-auto">
+                    <WhatsappShareButton
+                      title="Share"
+                      separator=""
+                      url={`https://wa.me/?text=${encodeURIComponent(
+                        `https://L4TOMO/message/${existingUserName}.vercel.app`
+                      )}`}
+                    >
+                      <a
+                        href={`https://wa.me/?text=${encodeURIComponent(
+                          `L4TOMO/message/${existingUserName}.vercel.app`
+                        )}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        <Button color="secondary" variant="shadow">
+                          Share on WhatsApp
+                        </Button>
+                      </a>
+                    </WhatsappShareButton>
+                  </div>
+                </CardBody>
+              </Card>
+            </div>
+          </section>
         </div>
       </section>
     </main>

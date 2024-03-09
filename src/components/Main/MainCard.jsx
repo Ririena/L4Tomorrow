@@ -5,6 +5,9 @@ import {
   Avatar,
   Button,
   Input,
+  Divider,
+  Image,
+  Link,
 } from "@nextui-org/react";
 import { supabase } from "../../utils/supabase";
 import { useState, useEffect } from "react";
@@ -94,31 +97,38 @@ export default function MainCard() {
 
   return (
     <main>
-      <section>
-        <div className="flex justify-center items-center">
-          <Card className="max-w-[400px]">
+      <section className="flex justify-center mt-12 items-center bg-gray-100">
+        <div className="max-w-md">
+          <Card bordered className="rounded-lg overflow-hidden">
             <CardHeader>
-              <Avatar
-                src="https://i.pravatar.cc/150?u=a042581f4e29026704d"
-                alt="Profile Picture"
-                size="lg"
-                bordered
-              />
+              <div className="mx-auto rounded-lg">
+                <Image
+                  src="/PFP.jpg"
+                  alt="Profile Picture"
+                  size="lg"
+                  bordered
+                />
+              </div>
             </CardHeader>
-            <CardBody>
+            <Divider />
+            <CardBody className="p-6">
+              <h1 className="text-2xl font-bold mb-4 mx-auto">
+                {userData ? userData.title : "Loading..."}
+              </h1>
               <Input
                 type="text"
-                placeholder="Title"
+                placeholder="New Title"
                 value={title}
                 onChange={handleTitleChange}
                 className="mb-4"
               />
               <Button
+                className="text-white"
                 onClick={handleAddData}
                 color="success"
-                variant="contained"
+                variant="shadow"
               >
-                Add Data
+                Add New Title
               </Button>
             </CardBody>
           </Card>

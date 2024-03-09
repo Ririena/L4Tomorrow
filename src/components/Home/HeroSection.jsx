@@ -69,7 +69,7 @@ const HeroSection = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
           >
             <Card
-              className="rounded-lg overflow-hidden shadow-lg"
+              className="rounded-lg  shadow-lg sm:hidden md:hidden lg:block xl:block"
               whileTap={{ scale: 0.95 }} // Tambahkan efek saat kartu ditekan
             >
               <motion.div

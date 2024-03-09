@@ -4,7 +4,9 @@ import Layouts from "../components/Layout/Layouts";
 export default function Home() {
   return (
     <>
+      <Layouts>
         <HeroSection />
+      </Layouts>
     </>
   );
 }
