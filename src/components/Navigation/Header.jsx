@@ -16,7 +16,7 @@ export default function Header() {
     <>
       <main>
         <section>
-          <Navbar static className="shadow-sm p-2">
+          <Navbar className="shadow-sm p-2">
             <NavbarBrand>
               <p className="font-bold text-inherit">Letter4T</p>
             </NavbarBrand>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Card, Button, Image } from "@nextui-org/react";
 import { motion } from "framer-motion";
-import { TypewriterEffect } from "../ui/typewriter-effect";
+
 import RetrieveUserFirst from "../Main/RetrieveUserFirst";
 import { supabase } from "../../utils/supabase";
 import {Grid, GridItem} from "@chakra-ui/react"
@@ -25,21 +25,7 @@ async function retrieveUser() {
 
 retrieveUser();
 
-const HeroSection = () => {
-  const words = [
-    {
-      text: "Auto",
-      className: "text-md",
-    },
-    {
-      text: "Memories",
-      className: "text-md",
-    },
-    {
-      text: "Started",
-      className: "text-md",
-    },
-  ];
+
 
   return (
     <div className="bg-gray-100 py-20">

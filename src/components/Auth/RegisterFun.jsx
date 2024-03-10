@@ -73,29 +73,7 @@ const SignCard = () => {
 
   return (
     <>
-      {/* <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="email"
-          value={tambahUsers.email}
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="password"
-          value={tambahUsers.password}
-          onChange={handleChange}
-        />
-        <input
-          type="password"
-          name="password2"
-          value={tambahUsers.password2}
-          onChange={handleChange}
-        />
-        <button type="submit" disabled={isSubmitting}>
-          {isSubmitting ? "Submitting..." : "Signup"}
-        </button>
-      </form> */}
+   
       <nav className="flex h-screen justify-center items-center ">
         <div className="shadow-lg">
           <div className="card w-96 bg-white shadow-xl rounded-lg overflow-hidden">
