@@ -13,14 +13,14 @@ import NotFound from "./pages/NotFound"
 export default function App() {
   return (
     <Routes>
-      <Route path="/login" element={<Login />} />
-      <Route path="/register" element={<Register />} />
-      <Route path="/me" element={<Me />} />
-      <Route path="/" element={<Home />} />
-      <Route path="/message/:urlId" element={<Url />} />
-      <Route path="/me/mail" element={<Mail />} />
-      <Route path="/test" element={<Test />} />
-      <Route path="*" element={<NotFound/>}/>
+      <Route exact path="/login" element={<Login />} />
+      <Route exact path="/register" element={<Register />} />
+      <Route exact path="/me" element={<Me />} />
+      <Route exact path="/" element={<Home />} />
+      <Route exact path="/message/:urlId" element={<Url />} />
+      <Route exact path="/me/mail" element={<Mail />} />
+      <Route exact path="/test" element={<Test />} />
+      <Route exact path="*" element={<NotFound/>}/>
     </Routes>
   );
 }
