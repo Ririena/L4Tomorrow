@@ -11,7 +11,7 @@ export default {
     extend: {
       colors: {
         evergarden: {
-          50: ""
+          50: "#f9fafa",
         }
       }
     },
