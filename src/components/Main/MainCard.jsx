@@ -113,7 +113,7 @@ export default function MainCard() {
             <Divider />
             <CardBody className="p-6">
               <h1 className="text-2xl font-bold mb-4 mx-auto">
-                {userData ? userData.title : "Loading..."}
+                {userData ? userData.title : ""}
               </h1>
               <Input
                 type="text"

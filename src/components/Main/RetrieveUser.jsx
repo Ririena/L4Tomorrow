@@ -87,40 +87,12 @@ export default function RetrieveUser() {
   };
 
   // Menampilkan loader jika data sedang diambil
-  if (isLoading) {
-    return <div>Loading...</div>;
-  }
+  // if (isLoading) {
+  //   return <div>Loading...</div>;
+  // }
 
   // Kondisi untuk menampilkan inputan dan tombol "Tambah Data" jika nama belum ada
-  if (!existingUserName) {
-    return (
-      <main>
-        <section>
-          <div className="max-w-[300px] mx-auto">
-            <Card shadow color="secondary">
-              <CardBody>
-                <Input
-                  type="text"
-                  placeholder="Nama User"
-                  value={newUserName}
-                  onChange={(e) => setNewUserName(e.target.value)}
-                  className="mb-4"
-                  color="secondary"
-                />
-                <Button
-                  onClick={handleAddData}
-                  color="secondary"
-                  variant="shadow"
-                >
-                  Tambah Data
-                </Button>
-              </CardBody>
-            </Card>
-          </div>
-        </section>
-      </main>
-    );
-  }
+
 
   // Kondisi jika nama sudah ada, tampilkan pesan bahwa nama sudah ada
   return (

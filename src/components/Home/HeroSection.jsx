@@ -2,6 +2,7 @@ import React from "react";
 import { Card, Button, Image } from "@nextui-org/react";
 import { motion } from "framer-motion";
 import { TypewriterEffect } from "../ui/typewriter-effect";
+import RetrieveUserFirst from "../Main/RetrieveUserFirst"
 import { supabase } from "../../utils/supabase";
 async function retrieveUser() {
   try {
@@ -56,7 +57,7 @@ const HeroSection = () => {
             that's why it is called Letter4Tomorrow
           </p>
           <Button color="primary" variant="flat" className="mt-4">
-            Get Started
+            Get Started!!
           </Button>
         </motion.div>
 
@@ -113,6 +114,7 @@ const HeroSection = () => {
           </motion.div>
         </div>
       </div>
+      <RetrieveUserFirst/>
     </div>
   );
 };
