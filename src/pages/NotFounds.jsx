@@ -1,12 +1,11 @@
-import NotFounded from "../components/Logs/NotFounded";
-
+import NotFounded from "../components/Logs/NotFounded"
 export default function NotFound() {
   return (
     <>
       <main>
         <section>
           <div>
-            <NotFounded />
+            <NotFounded/>
           </div>
         </section>
       </main>
