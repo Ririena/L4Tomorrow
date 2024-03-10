@@ -25,10 +25,12 @@ const MeWithLayout = withLayout(LayoutsUser, Me);
 export default function App() {
   return (
     <Routes>
-      <Route path="/" element={<HomeWithLayout />} />
+      <Route path="/" element={<HomeWithLayout />}>
+        <Route index element={<Home />} />
+      </Route>
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
-      <Route path="message" element={<MeWithLayout/>}>
+      <Route path="message" element={<MeWithLayout />}>
         <Route path=":urlId" element={<Url />} />
       </Route>
       <Route path="me" element={<MeWithLayout />}>

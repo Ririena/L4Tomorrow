@@ -14,7 +14,8 @@ import {
   Textarea,
 } from "@nextui-org/react";
 import { v4 as uuidv4 } from "uuid";
-
+import { AiOutlinePicture } from "react-icons/ai";
+import { MdOutlineMessage } from "react-icons/md";
 export default function MainUserParams() {
   const [gambar, setGambar] = useState(null);
   const [url, setUrl] = useState(null);
@@ -108,6 +109,16 @@ export default function MainUserParams() {
   return (
     <>
       <main>
+        <div className="flex gap-4 items-center" >
+          <Button color="success" >
+            <AiOutlinePicture />
+            Kirim Gambar
+          </Button>
+          <Button color="danger" variant="bordered" >
+            <MdOutlineMessage />
+            Kirim Text
+          </Button>
+        </div>
         <div className="mt-4">
           <section className="flex justify-center items-center mb-96">
             <div className="max-w-md w-full">
@@ -137,6 +148,8 @@ export default function MainUserParams() {
                       placeholder="Enter Your Letter Violet✉️"
                       className="w-full"
                     />
+                 <Input type="file" accept="image/*" />
+                  
                   </div>
                 </CardBody>
                 <Divider />
@@ -146,23 +159,6 @@ export default function MainUserParams() {
               </Card>
             </div>
           </section>
-
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="Judul Pesan"
-              required
-            />
-            <textarea
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder="Isi Pesan"
-              required
-            ></textarea>
-            <button type="submit">Kirim Pesan</button>
-          </form>
         </div>
       </main>
     </>
