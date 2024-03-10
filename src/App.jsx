@@ -9,7 +9,7 @@ import Me from "./pages/Me";
 import Mail from "./pages/Mail";
 import Url from "./pages/Url";
 import Test from "./pages/Test";
-import NotFound from "./pages/NotFound";
+import NotFounded from "./pages/NotFounded";
 import MailId from "./pages/MailId";
 
 const withLayout = (LayoutComponent, ChildComponent) => {
