@@ -41,7 +41,7 @@ export default function App() {
           <Route path=":mailId" element={<MailId />} />
         </Route>
       </Route>
-      <Route path="*" element={<NotFound />} />
+      <Route path="*" element={<NotFounds/>} />
     </Routes>
   );
 }
