@@ -1,5 +1,5 @@
 import NotFounded from "../components/Logs/NotFounded"
-export default function NotFound() {
+export default function NotFounds() {
   return (
     <>
       <main>
