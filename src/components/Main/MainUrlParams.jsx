@@ -79,17 +79,8 @@ export default function MainUserParams() {
   };
 
   const handleSave = async () => {
-    if (namaUser == urlId) {
-    throw  toasti({
-        title: "Warning",
-        description: "✉️ Jangan Halu Sayangku, Arin Tau Kok Kamu Kesepian",
-        status: "warning",
-        duration: 10000,
-        position: "top",
-        isClosable: true,
-      }) 
-   
-    }
+    
+ 
 
     let imageName = null;
 

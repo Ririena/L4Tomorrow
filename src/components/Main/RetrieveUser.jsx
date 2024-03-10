@@ -130,13 +130,7 @@ export default function RetrieveUser() {
                 </CardHeader>
                 <CardBody>
                   <div className="mx-auto">
-                    <WhatsappShareButton
-                      title="Share"
-                      separator=""
-                      url={`https://wa.me/?text=${encodeURIComponent(
-                        `https://L4TOMO/message/${existingUserName}.vercel.app`
-                      )}`}
-                    >
+               
                       <a
                         href={`https://wa.me/?text=${encodeURIComponent(
                           `L4TOMO/message/${existingUserName}.vercel.app`
@@ -148,7 +142,6 @@ export default function RetrieveUser() {
                           Share on WhatsApp
                         </Button>
                       </a>
-                    </WhatsappShareButton>
                   </div>
                 </CardBody>
               </Card>
