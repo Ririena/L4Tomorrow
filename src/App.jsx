@@ -28,12 +28,12 @@ export default function App() {
       <Route path="/" element={<HomeWithLayout />} />
       <Route path="login" element={<Login />} />
       <Route path="register" element={<Register />} />
+      <Route path="message" element={<MeWithLayout/>}>
+        <Route path=":urlId" element={<Url />} />
+      </Route>
       <Route path="me" element={<MeWithLayout />}>
         <Route index element={<Me />} />
         <Route path="mail" element={<Mail />} />
-        <Route path="message">
-          <Route path=":urlId" element={<Url />} />
-        </Route>
       </Route>
       <Route path="*" element={<NotFound />} />
     </Routes>
