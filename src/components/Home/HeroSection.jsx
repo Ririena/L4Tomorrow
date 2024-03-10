@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, Button, Image } from "@nextui-org/react";
+import { Card, Button, Image, Link } from "@nextui-org/react";
 import { motion } from "framer-motion";
 import RetrieveUserFirst from "../Main/RetrieveUserFirst";
 import { supabase } from "../../utils/supabase";
@@ -59,7 +59,7 @@ const HeroSection = () => {
             Evergarden or a mailer which sends letters to people there, and
             that's why it is called Letter4Tomorrow
           </p>
-          <Button color="primary" variant="flat" className="mt-4">
+          <Button color="primary" variant="flat" as={Link} href="/me" className="mt-4">
             Get Started!!
           </Button>
         </motion.div>

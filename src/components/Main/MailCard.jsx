@@ -1,6 +1,6 @@
-import { supabase } from  "../../utils/supabase.js"
+import { supabase } from "../../utils/supabase.js";
 import { useState, useEffect } from "react";
-
+import LayoutsUser from "../../components/Layout/LayoutsUser.jsx";
 export default function Mail() {
   const [userId, setUserId] = useState(null);
   const [receiverData, setReceiverData] = useState(null);
@@ -8,37 +8,37 @@ export default function Mail() {
   useEffect(() => {
     async function fetchUser() {
       try {
-        const { data: { user }, error } = await supabase.auth.getUser();
+        const {
+          data: { user },
+          error,
+        } = await supabase.auth.getUser();
 
         if (error) {
           throw error;
         }
 
-        
         const { data: userData, error: userError } = await supabase
           .from("user")
           .select("id")
           .eq("email", user.email)
-          .single()
-        
+          .single();
 
         if (userError) {
           throw userError;
         }
 
-        setUserId(userData.id); 
+        setUserId(userData.id);
 
-        
         const { data: receiver, error: receiverError } = await supabase
           .from("message")
           .select("*")
-          .eq("ReceiverMaillerURL", userData.id) 
+          .eq("ReceiverMaillerURL", userData.id);
 
         if (receiverError) {
           throw receiverError;
         }
 
-        setReceiverData(receiver); 
+        setReceiverData(receiver);
       } catch (error) {
         console.error("Error fetching user or messages:", error.message);
       }

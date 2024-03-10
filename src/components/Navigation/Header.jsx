@@ -22,7 +22,7 @@ export default function Header() {
             </NavbarBrand>
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
               <NavbarItem>
-                <Link color="foreground" href="#">
+                <Link color="foreground" href="/about">
                   What's L4T?
                 </Link>
               </NavbarItem>
@@ -32,7 +32,7 @@ export default function Header() {
                 </Link>
               </NavbarItem>
               <NavbarItem>
-                <Link color="foreground" href="#">
+                <Link color="foreground" href="/faq">
                   FAQ
                 </Link>
               </NavbarItem>
@@ -40,10 +40,10 @@ export default function Header() {
 
             <NavbarContent justify="end">
               <NavbarItem className="hidden lg:flex">
-                <Link href="#">Login</Link>
+                <Link href="/login">Login</Link>
               </NavbarItem>
               <NavbarItem>
-                <Button as={Link} color="primary" href="#" variant="flat">
+                <Button as={Link} color="primary" href="/register" variant="flat">
                   Sign Up
                 </Button>
               </NavbarItem>

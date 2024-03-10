@@ -9,18 +9,33 @@ import Me from "./pages/Me";
 import Mail from "./pages/Mail";
 import Url from "./pages/Url";
 import Test from "./pages/Test";
-import NotFound from "./pages/NotFound"
+import NotFound from "./pages/NotFound";
+
+const withLayout = (LayoutComponent, ChildComponent) => {
+  return (props) => (
+    <LayoutComponent>
+      <ChildComponent {...props}></ChildComponent>
+    </LayoutComponent>
+  );
+};
+
+const HomeWithLayout = withLayout(Layouts, Home);
+const MeWithLayout = withLayout(LayoutsUser, Me);
+
 export default function App() {
   return (
     <Routes>
-      <Route exact path="/login" element={<Login />} />
-      <Route exact path="/register" element={<Register />} />
-      <Route exact path="/me" element={<Me />} />
-      <Route exact path="/" element={<Home />} />
-      <Route exact path="/message/:urlId" element={<Url />} />
-      <Route exact path="/me/mail" element={<Mail />} />
-      <Route exact path="/test" element={<Test />} />
-      <Route exact path="*" element={<NotFound/>}/>
+      <Route path="/" element={<HomeWithLayout />} />
+      <Route path="login" element={<Login />} />
+      <Route path="register" element={<Register />} />
+      <Route path="me" element={<MeWithLayout />}>
+        <Route index element={<Me />} />
+        <Route path="mail" element={<Mail />} />
+        <Route path="message">
+          <Route path=":urlId" element={<Url />} />
+        </Route>
+      </Route>
+      <Route path="*" element={<NotFound />} />
     </Routes>
   );
 }

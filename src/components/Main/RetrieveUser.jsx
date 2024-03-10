@@ -93,13 +93,11 @@ export default function RetrieveUser() {
 
   // Kondisi untuk menampilkan inputan dan tombol "Tambah Data" jika nama belum ada
 
-
   // Kondisi jika nama sudah ada, tampilkan pesan bahwa nama sudah ada
   return (
     <main className="pb-28">
       <section>
-        <div className="">
-          <p>Nama sudah ada: {existingUserName}</p>
+        <div className="mt-4">
           <section className="flex justify-center items-center">
             <div className="max-w-md w-full">
               <Card className="rounded-lg overflow-hidden">

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { supabase } from "../../utils/supabase.js";
 import { useToast } from "@chakra-ui/react";
+import {useNavigate} from "react-router-dom"
 import {
   Card,
   CardHeader,
@@ -14,6 +15,7 @@ import {
 
 export default function LoginFun() {
   const toast = useToast();
+  const navigate = useNavigate()
   const [userData, setUserData] = useState(null);
 
   const [form, setForm] = useState({
@@ -61,6 +63,7 @@ export default function LoginFun() {
           duration: 5000,
           isClosable: true,
         });
+        navigate("/me")
       }
     } catch (error) {
       console.error(error.message);
