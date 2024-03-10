@@ -80,7 +80,7 @@ export default function RetrieveUserFirst() {
   };
 
   if (isLoading) {
-    return ;
+    return;
   }
   if (!existingUserName) {
     return (

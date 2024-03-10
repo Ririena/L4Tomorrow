@@ -9,7 +9,7 @@ import Me from "./pages/Me";
 import Mail from "./pages/Mail";
 import Url from "./pages/Url";
 import Test from "./pages/Test";
-
+import NotFound from "./pages/NotFound"
 export default function App() {
   return (
     <Routes>
@@ -20,6 +20,7 @@ export default function App() {
       <Route path="/message/:urlId" element={<Url />} />
       <Route path="/me/mail" element={<Mail />} />
       <Route path="/test" element={<Test />} />
+      <Route path="*" element={<NotFound/>}/>
     </Routes>
   );
 }

@@ -6,8 +6,8 @@ const Footer = () => {
     <>
         <div className="relative">
           <Card className="absolute inset-x-0 bottom-0">
-            <div className="bg-slate-50 p-4">
-              <h1 className="text-2xl">Hello World</h1>
+            <div className="bg-slate-50 p-4 mx-auto">
+              <h1 className="text-2xl">Made By Ariena With❤️</h1>
             </div>
           </Card>
         </div>
