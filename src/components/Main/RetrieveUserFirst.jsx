@@ -95,7 +95,7 @@ export default function RetrieveUserFirst() {
                   value={newUserName}
                   onChange={(e) => setNewUserName(e.target.value)}
                   className="mb-4"
-                  color="secondary"
+                  color="secondary" 
                 />
                 <Button
                   onClick={handleAddData}

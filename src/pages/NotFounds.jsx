@@ -11,7 +11,7 @@ import {
 } from "@nextui-org/react";
 import { redirect, useNavigate } from "react-router-dom";
 
-export default function NotFound() {
+export default function NotFounds() {
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
   const [userEmail, setUserEmail] = useState("");

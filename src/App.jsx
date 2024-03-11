@@ -9,7 +9,8 @@ import Me from "./pages/Me";
 import Mail from "./pages/Mail";
 import Url from "./pages/Url";
 import Test from "./pages/Test";
-import NotFound from "./pages/NotFound";
+import NotFounds from "./pages/NotFounds"
+import MailId from "./pages/MailId";
 
 const withLayout = (LayoutComponent, ChildComponent) => {
   return (props) => (
@@ -35,9 +36,12 @@ export default function App() {
       </Route>
       <Route path="me" element={<MeWithLayout />}>
         <Route index element={<Me />} />
-        <Route path="mail" element={<Mail />} />
+        <Route path="mail">
+          <Route index element={<Mail />} />
+          <Route path=":mailId" element={<MailId />} />
+        </Route>
       </Route>
-      <Route path="*" element={<NotFound />} />
+      <Route path="*" element={<NotFounds/>} />
     </Routes>
   );
 }
