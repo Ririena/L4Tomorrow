@@ -77,16 +77,15 @@ export default function MainUserParams() {
     if (userId == urlId) {
       alert("Jangan Halu Sayangku");
     }
-
     let imageName = null;
-
+    
     if (picture) {
       imageName = `${uuidv4()}.${picture.name.split(".").pop()}`;
-
+      
       const { data: pictureData, error: pictureError } = await supabase.storage
-        .from("gambar")
-        .upload(`picture/${imageName}`, picture);
-
+      .from("gambar")
+      .upload(`picture/${imageName}`, picture);
+      
       if (pictureError) {
         console.error("Error Uploading", pictureError);
       }
@@ -97,7 +96,7 @@ export default function MainUserParams() {
       gambar: imageName,
       ReceiverMaillerURL: userId,
     };
-
+    
     const { data, error } = await supabase.from("message").insert([newMessage]);
     if (error) {
       console.error(error.message);
@@ -105,20 +104,22 @@ export default function MainUserParams() {
       console.log("Data Berhasil Dikirim", data);
     }
   };
+  const [isOpened, setIsOpened]= useState(false);
+  const handleKirim = ()=> {
+    setIsOpened(!isOpened);
+  }
+  const eventFoto = (e) => {
+    const selectedFile = e.target.files[0];
 
+    if (selectedFile) {
+      setPicutre(selectedFile);
+    } else {
+      console.log("Tidak Ada File Yang Dipilih");
+    }
+  };
   return (
     <>
       <main>
-        <div className="flex gap-4 items-center" >
-          <Button color="success" >
-            <AiOutlinePicture />
-            Kirim Gambar
-          </Button>
-          <Button color="danger" variant="bordered" >
-            <MdOutlineMessage />
-            Kirim Text
-          </Button>
-        </div>
         <div className="mt-4">
           <section className="flex justify-center items-center mb-96">
             <div className="max-w-md w-full">
@@ -140,21 +141,31 @@ export default function MainUserParams() {
                       onChange={(e) => setTitle(e.target.value)}
                       placeholder="Enter Your Title Violet"
                     />
-                    <Textarea
+                   
+                    {isOpened ?(<Input type="file" accept="image/*" onChange={eventFoto} color="secondary" /> 
+                   ):(<Textarea
                       label="message"
                       color="secondary"
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Enter Your Letter Violet✉️"
-                      className="w-full"
-                    />
-                 <Input type="file" accept="image/*" />
+                      className="w-full" />)}
+                 
                   
                   </div>
                 </CardBody>
                 <Divider />
                 <CardFooter>
-                  <Button color="secondary" onClick={handleSave} />
+                  <div className="flex gap-4 mx-auto">
+
+                  <Button color="secondary" onClick={handleSave} >
+                    Kirim
+                  </Button>
+                <Button color="secondary" variant="bordered" onClick={handleKirim}>
+           
+           {isOpened?   <MdOutlineMessage size="1.5rem"/>:<AiOutlinePicture  size="1.5rem"/> }
+         </Button>
+                  </div>
                 </CardFooter>
               </Card>
             </div>
