@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { supabase } from "../../utils/supabase";
-import {useToast} from "@chakra-ui/react"
-import {ToastContainer, toast as notif} from "react-toastify"
 import {
   Card,
   CardHeader,
@@ -16,13 +14,12 @@ import {
   Textarea,
 } from "@nextui-org/react";
 import { v4 as uuidv4 } from "uuid";
-
+import { AiOutlinePicture } from "react-icons/ai";
+import { MdOutlineMessage } from "react-icons/md";
 export default function MainUserParams() {
   const [gambar, setGambar] = useState(null);
   const [url, setUrl] = useState(null);
   const [titleDynamic, setTitleDynamic] = useState(null);
-  const [namaUser, setNamaUser] = useState(null)
-  const toasti = useToast()
   let { urlId } = useParams();
 
   useEffect(() => {
@@ -30,20 +27,18 @@ export default function MainUserParams() {
       try {
         const { data, error } = await supabase
           .from("user")
-          .select("nama_user, id, title, nama_user")
+          .select("nama_user, id, title")
           .eq("nama_user", urlId);
 
         if (error) {
           throw error;
         }
 
-        
         if (data && data.length > 0) {
           setUrl(data[0].nama_user);
           setTitleDynamic(data[0].title);
 
           setUserId(data[0].id);
-          setNamaUser(data[0].nama_user)
         } else {
           console.log("URL tidak ditemukan");
         }
@@ -79,9 +74,9 @@ export default function MainUserParams() {
   };
 
   const handleSave = async () => {
-    
- 
-
+    if (userId == urlId) {
+      alert("Jangan Halu Sayangku");
+    }
     let imageName = null;
 
     if (picture) {
@@ -109,8 +104,19 @@ export default function MainUserParams() {
       console.log("Data Berhasil Dikirim", data);
     }
   };
+  const [isOpened, setIsOpened] = useState(false);
+  const handleKirim = () => {
+    setIsOpened(!isOpened);
+  };
+  const eventFoto = (e) => {
+    const selectedFile = e.target.files[0];
 
-
+    if (selectedFile) {
+      setPicutre(selectedFile);
+    } else {
+      console.log("Tidak Ada File Yang Dipilih");
+    }
+  };
   return (
     <>
       <main>
@@ -121,78 +127,67 @@ export default function MainUserParams() {
                 <CardHeader className="flex items-center justify-center">
                   <Avatar src="/PFP.jpg" />
                   <div className="mx-4 mb-2 flex-1">
-                    <h1 className="text-md font-sans">@{url}</h1>
+                    <h1 className="text-md font-sans">{url}</h1>
                     <h1 className="text-md font-sans">{titleDynamic}</h1>
                   </div>
                 </CardHeader>
                 <Divider />
                 <CardBody>
-                  <div className="">
+                  <div>
                     <Input
-                    label="Title"
-                    isRequired
                       type="text"
                       color="secondary"
-                      className="bg-violet500"
                       value={title}
                       onChange={(e) => setTitle(e.target.value)}
                       placeholder="Enter Your Title Violet"
                     />
-                    <Textarea
-                      label="message"
-                      color="secondary"
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Enter Your Letter Violet✉️"
-                      className="w-full mt-2"
-                    />
+
+                    {isOpened ? (
+                      <Input
+                        type="file"
+                        accept="image/*"
+                        onChange={eventFoto}
+                        color="secondary"
+                      />
+                    ) : (
+                      <Textarea
+                        label="message"
+                        color="secondary"
+                        value={message}
+                        onChange={(e) => setMessage(e.target.value)}
+                        placeholder="Enter Your Letter Violet✉️"
+                        className="w-full"
+                      />
+                    )}
                   </div>
                 </CardBody>
                 <Divider />
                 <CardFooter>
-                  <div className="mx-auto">
-                    <Button
+                  <div className="flex gap-4 mx-auto">
+                  <Button
                       color="secondary"
                       variant="solid"
                       onClick={handleSave}
                     >
                       Send Mail
                     </Button>
+                    <Button
+                      color="secondary"
+                      variant="bordered"
+                      onClick={handleKirim}
+                    >
+                      {isOpened ? (
+                        <MdOutlineMessage size="1.5rem" />
+                      ) : (
+                        <AiOutlinePicture size="1.5rem" />
+                      )}
+                    </Button>
                   </div>
                 </CardFooter>
               </Card>
             </div>
           </section>
-
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="Judul Pesan"
-              required
-            />
-            <textarea
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder="Isi Pesan"
-              required
-            ></textarea>
-            <button type="submit">Kirim Pesan</button>
-          </form>
         </div>
-        <ToastContainer
-        position="top-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        />
       </main>
     </>
   );

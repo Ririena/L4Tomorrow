@@ -37,7 +37,13 @@ export default function HeaderMobile() {
     };
     fetchUserData();
   }, []);
-
+const handleLogOut = async()=>{
+  try{
+    const {error} = await supabase.auth.signOut();
+  }catch(error){
+    console.error("gagal Logout")
+  }
+}
   return (
     <div>
       <Navbar className="shadow-sm">
@@ -85,8 +91,10 @@ export default function HeaderMobile() {
               <DropdownItem key="settings">My Settings</DropdownItem>
               <DropdownItem key="team_settings">My Mail</DropdownItem>
 
-              <DropdownItem key="logout" color="danger">
+              <DropdownItem key="logout" color="danger"><button onClick={handleLogOut}>
+
                 Log Out
+              </button>
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>

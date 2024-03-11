@@ -1,10 +1,10 @@
 import React from "react";
 import { Card, Button, Image, Link } from "@nextui-org/react";
-import { motion } from "framer-motion";
+import { motion, useViewportScroll, useTransform} from "framer-motion";
 import RetrieveUserFirst from "../Main/RetrieveUserFirst";
 import { supabase } from "../../utils/supabase";
 import { Grid, GridItem } from "@chakra-ui/react";
-
+import ParallaxImages from "./Hero/ParallaxImages"
 async function retrieveUser() {
   try {
     const {
@@ -26,6 +26,11 @@ async function retrieveUser() {
 retrieveUser();
 
 const HeroSection = () => {
+  const { scrollYProgress } = useViewportScroll(); // Dapatkan nilai kemajuan gulir
+
+  // Gunakan useTransform untuk mengontrol posisi gambar berdasarkan scroll
+  const y1 = useTransform(scrollYProgress, [0, 0.5], [0, -500]);
+  const y2 = useTransform(scrollYProgress, [0, 0.5], [0, -300]);
   const words = [
     {
       text: "Auto",
@@ -43,6 +48,7 @@ const HeroSection = () => {
 
   return (
     <div className="bg-gray-100 py-20">
+
       <div className="container mx-auto flex justify-between items-center">
         <motion.div
           className="max-w-lg mx-4"
