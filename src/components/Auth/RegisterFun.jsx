@@ -3,10 +3,20 @@
 import { useState } from "react";
 import { useToast } from "@chakra-ui/react";
 import { supabase } from "../../utils/supabase.js";
-
+import { useNavigate } from "react-router-dom"; 
+import {
+  Card,
+  CardHeader,
+  CardBody,
+  CardFooter,
+  Button,
+  Input,
+  Divider,
+  Image,
+} from "@nextui-org/react";
 const SignCard = () => {
   const toast = useToast();
-
+const navigate = useNavigate();
   const [tambahUsers, setTambahUsers] = useState({
     email: "",
     password: "",
@@ -69,11 +79,106 @@ const SignCard = () => {
     }
   };
 
-  
+  const handleLogin = async ()=>{
+navigate("/login");
+  }
 
   return (
     <>
-   
+    <main>
+      <section>
+        <div className="h-screen flex items-center justify-center bg-blue-50">
+          <Card
+            shadow="xl"
+            className="w-full md:max-w-[400px]"
+            color="blue"
+            border="none"
+          >
+            <CardHeader color="white" background="blue" className="">
+              <section className="mx-auto">
+                <h1 className=" text-black text-3xl font-semibold">Register</h1>
+              </section>
+            </CardHeader>
+            <Divider />
+            <CardBody>
+              <form onSubmit={handleSubmit}>
+                <div className="mb-4">
+                  <Input
+                    type="email"
+                    placeholder="Email"
+                    id="email"
+                    name="email"
+                    value={tambahUsers.email}
+                    onChange={handleChange
+                    }
+                    required
+                    color="secondary"
+                    fullWidth
+                    className="text-white border-none"
+                  />
+                </div>
+                <div className="mb-4">
+                  <Input
+                    type="password"
+                    id="password"
+                    name="password"
+                    color="secondary"
+                    placeholder="Password"
+                    value={tambahUsers.password}
+                    onChange={handleChange
+                    }
+                    required
+                    fullWidth
+                    className="text-white border-none "
+                  />
+                </div>
+                <div className="mb-4">
+                  <Input
+                    type="password"
+                    id="password2"
+                    name="password2"
+                    placeholder="Confirm Password"
+                    color="secondary"
+                    value={tambahUsers.password2}
+                    onChange={handleChange
+                    }
+                    required
+                    fullWidth
+                    className="text-white border-none"
+                  />
+                </div>
+                <Button
+                color="secondary"
+                    type="submit"
+                    className={`btn btn-primary w-full bg-purple-500 hover:bg-purple-700 focus:ring-purple-500 text-white ${
+                      isSubmitting ? "opacity-50 cursor-not-allowed" : ""
+                    }`}
+                    disabled={isSubmitting}
+                  >
+                    {isSubmitting ? "Submitting..." : "Signup"}
+                  </Button>
+              </form>
+            </CardBody>
+            <Divider/>
+            <CardFooter>
+            <Button
+                color=""
+                variant="shadow"
+                onClick={handleLogin}
+                fullWidth
+                border="2" // Menambahkan border dengan ketebalan 2 piksel
+                className="bg-purple-50 mx-auto"
+              >
+               
+               
+                  Already have an account?..
+                        </Button>
+            </CardFooter>
+          </Card>
+        </div>
+      </section>
+    </main>
+{/*    
       <nav className="flex h-screen justify-center items-center ">
         <div className="shadow-lg">
           <div className="card w-96 bg-white shadow-xl rounded-lg overflow-hidden">
@@ -156,7 +261,7 @@ const SignCard = () => {
             </div>
           </div>
         </div>
-      </nav>
+      </nav> */}
     </>
   );
 };
