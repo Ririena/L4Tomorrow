@@ -108,12 +108,12 @@ export default function RetrieveUser() {
                 </CardHeader>
                 <CardBody>
                   <div className="mx-auto text-md">
-                    <section>L4TOMO/message/jaisy.vercel.app</section>
+                    <section>https://l4tomo.vercel.app</section>
                   </div>
                 </CardBody>
                 <CardFooter>
                   <div className="mx-auto">
-                    <Snippet>{`/L4TOMO/message/${existingUserName}.vercel.app`}</Snippet>
+                    <Snippet>{`https://l4tomo/message/${existingUserName}.vercel.app`}</Snippet>
                   </div>
                 </CardFooter>
               </Card>

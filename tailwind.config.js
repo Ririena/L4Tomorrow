@@ -56,7 +56,6 @@ export default {
         },
         light: {
           colors: {
-            background: "#fefcfd", // or DEFAULT
             foreground: "#11181C", // or 50 to 900 DEFAULT
             primary: {
               //... 50 to 900
@@ -73,7 +72,7 @@ export default {
               foreground: "#FFFFFF",
               DEFAULT: "#6c21e1",
             },
-            
+
             // ... rest of the colors
           },
         },
