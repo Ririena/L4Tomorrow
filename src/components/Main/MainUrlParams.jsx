@@ -16,7 +16,8 @@ import {
   Textarea,
 } from "@nextui-org/react";
 import { v4 as uuidv4 } from "uuid";
-
+import { AiOutlinePicture } from "react-icons/ai";
+import { MdOutlineMessage } from "react-icons/md";
 export default function MainUserParams() {
   const [gambar, setGambar] = useState(null);
   const [url, setUrl] = useState(null);
@@ -79,18 +80,22 @@ export default function MainUserParams() {
   };
 
   const handleSave = async () => {
+
+    if (userId == urlId) {
+      alert("Jangan Halu Sayangku");
+    }
+
     
- 
 
     let imageName = null;
-
+    
     if (picture) {
       imageName = `${uuidv4()}.${picture.name.split(".").pop()}`;
-
+      
       const { data: pictureData, error: pictureError } = await supabase.storage
-        .from("gambar")
-        .upload(`picture/${imageName}`, picture);
-
+      .from("gambar")
+      .upload(`picture/${imageName}`, picture);
+      
       if (pictureError) {
         console.error("Error Uploading", pictureError);
       }
@@ -101,7 +106,7 @@ export default function MainUserParams() {
       gambar: imageName,
       ReceiverMaillerURL: userId,
     };
-
+    
     const { data, error } = await supabase.from("message").insert([newMessage]);
     if (error) {
       console.error(error.message);
@@ -109,7 +114,19 @@ export default function MainUserParams() {
       console.log("Data Berhasil Dikirim", data);
     }
   };
+  const [isOpened, setIsOpened]= useState(false);
+  const handleKirim = ()=> {
+    setIsOpened(!isOpened);
+  }
+  const eventFoto = (e) => {
+    const selectedFile = e.target.files[0];
 
+    if (selectedFile) {
+      setPicutre(selectedFile);
+    } else {
+      console.log("Tidak Ada File Yang Dipilih");
+    }
+  };
 
   return (
     <>
@@ -138,18 +155,32 @@ export default function MainUserParams() {
                       onChange={(e) => setTitle(e.target.value)}
                       placeholder="Enter Your Title Violet"
                     />
-                    <Textarea
+                   
+                    {isOpened ?(<Input type="file" accept="image/*" onChange={eventFoto} color="secondary" /> 
+                   ):(<Textarea
                       label="message"
                       color="secondary"
                       value={message}
                       onChange={(e) => setMessage(e.target.value)}
                       placeholder="Enter Your Letter Violet✉️"
+                      className="w-full" />)}
+                 
+                  
                       className="w-full mt-2"
                     />
                   </div>
                 </CardBody>
                 <Divider />
                 <CardFooter>
+                  <div className="flex gap-4 mx-auto">
+
+                  <Button color="secondary" onClick={handleSave} >
+                    Kirim
+                  </Button>
+                <Button color="secondary" variant="bordered" onClick={handleKirim}>
+           
+           {isOpened?   <MdOutlineMessage size="1.5rem"/>:<AiOutlinePicture  size="1.5rem"/> }
+         </Button>
                   <div className="mx-auto">
                     <Button
                       color="secondary"
@@ -163,23 +194,6 @@ export default function MainUserParams() {
               </Card>
             </div>
           </section>
-
-          <form onSubmit={handleSubmit}>
-            <input
-              type="text"
-              value={title}
-              onChange={(e) => setTitle(e.target.value)}
-              placeholder="Judul Pesan"
-              required
-            />
-            <textarea
-              value={message}
-              onChange={(e) => setMessage(e.target.value)}
-              placeholder="Isi Pesan"
-              required
-            ></textarea>
-            <button type="submit">Kirim Pesan</button>
-          </form>
         </div>
         <ToastContainer
         position="top-right"
