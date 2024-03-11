@@ -10,6 +10,7 @@ import {
   CardFooter,
   Divider,
   Image,
+  Button,
 } from "@nextui-org/react";
 import MainMailNotif from "../../components/Main/MainMailNotif";
 import { Spinner } from "@nextui-org/react";
@@ -77,7 +78,7 @@ export default function MainMailParams() {
     <>
       <div></div>
       {loading && (
-        <div className="flex justify-center items-center h-screen bg-white bg-opacity-30">
+        <div className="flex justify-center items-center h-screen bg-white bg-opacity-30 ">
           <Spinner
             label="Loading..."
             color="secondary"
@@ -92,7 +93,7 @@ export default function MainMailParams() {
         </div>
       )}
       {!loading && userEmail && mailData && (
-        <main className="bg-white mt-8">
+        <main className="bg-white mt-8 relative pb-[400px]">
           <div className="flex justify-center items-center">
             <MainMailNotif />
             <AnimatePresence>
@@ -164,34 +165,60 @@ export default function MainMailParams() {
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.5 }}
                   >
-                    <Card bordered shadow>
-                      <CardHeader>
-                        <div className="mx-auto">
-                          <h1 className="text-xl font-serif capitalize">
-                            {mailData.title}
-                          </h1>
+                    <Card
+                      bordered
+                      shadow
+                      className="max-w-2xl mx-auto p-8 rounded-lg bg-opacity-75"
+                    >
+                      <div className="flex justify-between items-center mb-4">
+                        <h1 className="text-3xl font-bold font-serif text-violet-900">
+                          {mailData.title}
+                        </h1>
+                        <p className="text-sm text-gray-500">
+                          From: Violet Evergarden
+                        </p>
+                      </div>
+                      <Divider className="border-violet-400 mb-4" />
+                      <div className="py-4">
+                        <p className="text-lg leading-relaxed text-gray-800">
+                          {mailData.message}
+                        </p>
+                      </div>
+                      <Divider className="border-violet-400 mt-4" />
+                      <div className="flex justify-between items-center mt-4">
+                        <div>
+                          <p className="text-sm text-gray-600">
+                            Violet Evergarden
+                          </p>
+                          <p className="text-xs text-gray-400">
+                            March 11, 2024
+                          </p>
                         </div>
-                      </CardHeader>
-                      <Divider />
-                      <CardBody>
-                        <div className="flex justify-center">
-                          <h1>{mailData.message}</h1>
-                        </div>
-                      </CardBody>
-                      <Divider />
-                      <CardFooter style={{ justifyContent: "flex-end" }}>
-                        <div className="flex justify-items-end">
-                          <h1>Violet Evergarden</h1>
-                        </div>
-                      </CardFooter>
+                        <Image
+                          src="/violetP.jpg"
+                          alt="Stamp"
+                          className="size-12"
+                        />
+                      </div>
                     </Card>
                   </motion.div>
                   <div className="mt-4">
-
-                  
-                    <Card>
-                    
-                    </Card>
+                    {/* Card dengan Gambar */}
+                    {!loading && userEmail && mailData && showDetail && (
+                      <Card bordered shadow>
+                        <div className="mx-auto">
+                          <Image
+                            src="/violetP.jpg"
+                            alt="Sample Image"
+                            className="rounded-md"
+                          />
+                        </div>
+                        <CardBody>
+                          <h3 className="text-lg font-semibold">Violet Pict</h3>
+                          <p>{mailData.message}</p>
+                        </CardBody>
+                      </Card>
+                    )}
                   </div>
                 </motion.div>
               )}
