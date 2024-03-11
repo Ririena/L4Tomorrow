@@ -1,34 +1,31 @@
-import React from "react";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { supabase } from "../../utils/supabase.js";
 import { useNavigate } from "react-router-dom";
 import {
   Card,
   CardBody,
-  CardHeader,
   CardFooter,
   Button,
   Input,
 } from "@nextui-org/react";
+
 export default function RetrieveUserFirst() {
   const [userEmail, setUserEmail] = useState(null);
-  const [newUserName, setNewUserName] = useState(""); // Tambahkan state untuk menyimpan nama user baru
-  const [existingUserName, setExistingUserName] = useState(""); // Tambahkan state untuk menyimpan nama user yang sudah ada
+  const [newUserName, setNewUserName] = useState("");
+  const [existingUserName, setExistingUserName] = useState("");
   const [isLoading, setIsLoading] = useState(true);
+  const [verify, setVerify] = useState(null);
   const navigate = useNavigate();
+
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const {
-          data: { user },
-          error,
-        } = await supabase.auth.getUser();
+        const { data: { user }, error } = await supabase.auth.getUser();
         if (error) {
           console.error(error.message);
         } else {
           setUserEmail(user.email);
 
-          // Ambil data user dengan email yang sama dari database
           const { data, error } = await supabase
             .from("user")
             .select("nama_user")
@@ -39,7 +36,6 @@ export default function RetrieveUserFirst() {
             console.error(error.message);
           } else {
             if (data) {
-              // Jika data ditemukan, simpan nama user yang sudah ada
               setExistingUserName(data.nama_user);
             }
           }
@@ -47,7 +43,6 @@ export default function RetrieveUserFirst() {
       } catch (error) {
         console.error(error.message);
       } finally {
-        // Set isLoading menjadi false setelah selesai mengambil data
         setIsLoading(false);
       }
     };
@@ -56,22 +51,20 @@ export default function RetrieveUserFirst() {
 
   const handleAddData = async () => {
     try {
-      // Cek apakah pengguna sudah memiliki nama di database
       if (existingUserName) {
         console.log("Nama sudah ada:", existingUserName);
         return;
       }
-
-      // Jika pengguna belum memiliki nama, tambahkan data baru ke database
+  
       const { data, error } = await supabase
         .from("user")
-        .insert([{ email: userEmail, nama_user: newUserName }]);
+        .insert([{ email: userEmail, nama_user: newUserName, Verified: true }]);
       if (error) {
         console.error(error.message);
       } else {
         console.log("Data added successfully:", data);
-        // Set newUserName kembali ke string kosong setelah berhasil menambahkan data
         setNewUserName("");
+        setVerify(true);
         navigate("/");
       }
     } catch (error) {
@@ -80,7 +73,7 @@ export default function RetrieveUserFirst() {
   };
 
   if (isLoading) {
-    return;
+    return null;
   }
   if (!existingUserName) {
     return (

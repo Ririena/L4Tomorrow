@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { supabase } from "../../utils/supabase.js";
 import { getUserByEmail, getUserFromTable } from "../../libs/UserLibs";
@@ -14,6 +14,7 @@ import {
 } from "@nextui-org/react";
 import MainMailNotif from "../../components/Main/MainMailNotif";
 import { Spinner } from "@nextui-org/react";
+import ReactPlayer from "react-player";
 
 export default function MainMailParams() {
   const [userData, setUserData] = useState(null);
@@ -21,6 +22,7 @@ export default function MainMailParams() {
   const [mailData, setMailData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [showDetail, setShowDetail] = useState(false);
+  const [videoUrl, setVideoUrl] = useState(false);
   const [isWaxLoaded, setIsWaxLoaded] = useState(false);
 
   const { mailId } = useParams();
@@ -58,6 +60,9 @@ export default function MainMailParams() {
         }
 
         setMailData(data);
+        if (data?.video) {
+          setVideoUrl(data.video);
+        }
       } catch (error) {
         console.error("Error fetching mail data:", error.message);
       } finally {
@@ -214,9 +219,14 @@ export default function MainMailParams() {
                           />
                         </div>
                         <CardBody>
-                        <Divider/>
+                          <Divider />
                           <h3 className="text-lg font-semibold">Violet Pict</h3>
                           <p>{mailData.message}</p>
+                          <ReactPlayer
+                            url={videoUrl}
+                            controls={true}
+                            className=""
+                          />
                         </CardBody>
                       </Card>
                     )}
