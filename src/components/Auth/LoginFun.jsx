@@ -63,7 +63,7 @@ export default function LoginFun() {
           duration: 5000,
           isClosable: true,
         });
-        navigate("/me")
+        navigate("/verified")
       }
     } catch (error) {
       console.error(error.message);
