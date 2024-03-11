@@ -190,7 +190,7 @@ export default function MainMailParams() {
                           <p className="text-sm text-gray-600">
                             Violet Evergarden
                           </p>
-                          <p className="text-xs text-gray-400">
+                          <p className="text-xs text-gray-400 ">
                             March 11, 2024
                           </p>
                         </div>
@@ -210,10 +210,11 @@ export default function MainMailParams() {
                           <Image
                             src="/violetP.jpg"
                             alt="Sample Image"
-                            className="rounded-md"
+                            className="rounded-md size-96 object-contain"
                           />
                         </div>
                         <CardBody>
+                        <Divider/>
                           <h3 className="text-lg font-semibold">Violet Pict</h3>
                           <p>{mailData.message}</p>
                         </CardBody>

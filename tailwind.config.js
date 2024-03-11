@@ -9,6 +9,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+'montserrat': ["Montserrat", "sans-serif"]
+      },
       colors: {
         violet: {
           50: "#F5F3FF",
