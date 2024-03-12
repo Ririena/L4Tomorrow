@@ -14,8 +14,8 @@ import MailId from "./pages/MailId";
 import RetrieveUserFirst from "./components/Main/RetrieveUserFirst";
 import Rank from "./pages/Rank";
 import Dashboard from "./pages/Dashboard";
-
-import LayoutsAdmin from "./components/Layout/LayoutsAdmin"
+import Edit from "./pages/Edit";
+import LayoutsAdmin from "./components/Layout/LayoutsAdmin";
 const withLayout = (LayoutComponent, ChildComponent) => {
   return (props) => (
     <LayoutComponent>
@@ -24,7 +24,7 @@ const withLayout = (LayoutComponent, ChildComponent) => {
   );
 };
 
-const AdminWithLayout = withLayout(LayoutsAdmin, Dashboard)
+const AdminWithLayout = withLayout(LayoutsAdmin, Dashboard);
 const HomeWithLayout = withLayout(Layouts, Home);
 const MeWithLayout = withLayout(LayoutsUser, Me);
 
@@ -33,9 +33,11 @@ export default function App() {
     <Routes>
       <Route path="/" element={<HomeWithLayout />}>
         <Route path="rank" element={<Rank />} />
+        <Route path="edit" element={<Edit />} />
+        <Route path="test" element={<Test />} />
         <Route index element={<Home />} />
       </Route>
-      <Route path="admin" element={<LayoutsAdmin/>}>
+      <Route path="admin" element={<LayoutsAdmin />}>
         <Route index element={<Dashboard />} />
       </Route>
       <Route path="login" element={<Login />} />

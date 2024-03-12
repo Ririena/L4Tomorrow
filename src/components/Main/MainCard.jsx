@@ -97,7 +97,7 @@ export default function MainCard() {
 
   return (
     <main>
-      <section className="flex justify-center mt-12 items-center bg-gray-100">
+      <section className="flex justify-center mt-12 items-center">
         <div className="max-w-md">
           <Card className="rounded-lg overflow-hidden">
             <CardHeader>
