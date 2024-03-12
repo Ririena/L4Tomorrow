@@ -32,15 +32,16 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<HomeWithLayout />}>
-        <Route path="rank" element={<Rank />} />
         <Route path="edit" element={<Edit />} />
         <Route path="test" element={<Test />} />
         <Route index element={<Home />} />
+      <Route path="rank" element={<Rank />} />
       </Route>
       <Route path="admin" element={<LayoutsAdmin />}>
         <Route index element={<Dashboard />} />
       </Route>
       <Route path="login" element={<Login />} />
+
       <Route path="verified" element={<RetrieveUserFirst />} />
       <Route path="register" element={<Register />} />
       <Route path="message" element={<MeWithLayout />}>

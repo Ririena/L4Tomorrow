@@ -99,7 +99,7 @@ export default function RetrieveUser() {
       <section>
         <div className="mt-4">
           <section className="flex justify-center items-center">
-            <div className="max-w-md w-full">
+            <div className="max-w-md lg:max-w-lg xl:max-w-lg w-full">
               <Card className="rounded-lg overflow-hidden">
                 <CardHeader>
                   <section className="mx-auto font-semibold">

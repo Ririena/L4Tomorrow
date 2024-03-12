@@ -98,7 +98,7 @@ export default function MainCard() {
   return (
     <main>
       <section className="flex justify-center mt-12 items-center">
-        <div className="max-w-md">
+        <div className="max-w-md lg:max-w-lg xl:max-w-lg">
           <Card className="rounded-lg overflow-hidden">
             <CardHeader>
               <div className="mx-auto rounded-lg">

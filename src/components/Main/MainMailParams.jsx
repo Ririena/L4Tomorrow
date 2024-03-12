@@ -105,7 +105,7 @@ export default function MainMailParams() {
               {!showDetail ? (
                 <motion.div
                   key="mailPreview"
-                  className="max-w-md lg:max-w-[600px] xl:max-w-[600px] w-full mx-auto relative overflow-visible"
+                  className="mt-16 shadow-xl max-w-md lg:max-w-[600px] xl:max-w-[600px] w-full mx-auto relative overflow-visible "
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 50 }}
@@ -133,18 +133,19 @@ export default function MainMailParams() {
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
-                    <Card bordered shadow>
-                      <CardHeader></CardHeader>
-                      <Divider />
-                      <CardBody>
-                        <div className="text-center mb-4">
-                          <p className="text-lg font-semibold capitalize">
-                            Dear Major ({userData.nama_user})
-                          </p>
-                        </div>
-                      </CardBody>
-                      <Divider />
-                    </Card>
+                  
+                      <Card shadow="lg" className=" pb-96">
+                        <CardHeader></CardHeader>
+                        <Divider />
+                        <CardBody>
+                          <div className="text-center mb-4">
+                            <p className="text-lg font-semibold capitalize">
+                              Dear Major ({userData.nama_user})
+                            </p>
+                          </div>
+                        </CardBody>
+                        <Divider />
+                      </Card>
                   </motion.div>
                 </motion.div>
               ) : (
