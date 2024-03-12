@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { supabase } from "../../utils/supabase";
 import {
+  Tab,
+  Tabs,
   Card,
   CardHeader,
   CardBody,
@@ -17,12 +19,16 @@ import { Input as Inputc } from "@chakra-ui/react";
 import { v4 as uuidv4 } from "uuid";
 import { AiOutlinePicture } from "react-icons/ai";
 import { MdOutlineMessage } from "react-icons/md";
-
 export default function MainUserParams() {
   const [gambar, setGambar] = useState(null);
   const [url, setUrl] = useState(null);
   const [titleDynamic, setTitleDynamic] = useState(null);
   const { urlId } = useParams();
+  const [userId, setUserId] = useState(null);
+  const [title, setTitle] = useState("");
+  const [message, setMessage] = useState("");
+  const [picture, setPicture] = useState(null);
+  const [youtubeUrl, setYoutubeUrl] = useState(""); // State untuk menyimpan URL video YouTube
 
   useEffect(() => {
     async function getUrl() {
@@ -50,12 +56,6 @@ export default function MainUserParams() {
     }
     getUrl();
   }, [urlId]);
-
-  const [userId, setUserId] = useState(null);
-  const [title, setTitle] = useState("");
-  const [message, setMessage] = useState("");
-  const [picture, setPicture] = useState(null);
-  const [youtubeUrl, setYoutubeUrl] = useState(""); // State untuk menyimpan URL video YouTube
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -109,111 +109,124 @@ export default function MainUserParams() {
       console.log("Data Berhasil Dikirim", data);
     }
   };
-
   const [isOpened, setIsOpened] = useState(false);
   const handleKirim = () => {
     setIsOpened(!isOpened);
   };
-
   const eventFoto = (e) => {
     const selectedFile = e.target.files[0];
 
     if (selectedFile) {
       setPicture(selectedFile);
-    } else {
-      console.log("Tidak Ada File Yang Dipilih");
     }
   };
-
+  let tabs = [
+    {
+      id: "photos",
+      label: "Gambar",
+      content: (
+        <Input
+          type="file"
+          accept="image/*"
+          onChange={(e) => setPicture(e.target.files[0])}
+          color="secondary"
+        />
+      ),
+    },
+    {
+      id: "Text",
+      label: "Text" ,
+      content: (
+        <Textarea
+          label="message"
+          color="secondary"
+          value={message}
+          onChange={(e) => setMessage(e.target.value)}
+          placeholder="Enter Your Letter Violet✉️"
+          className="w-full"
+        />
+      ),
+    },
+    {
+      id: "Video",
+      label: "Videos",
+      content: (
+        <>
+          <Input
+            type="text"
+            color="secondary"
+            value={youtubeUrl}
+            onChange={(e) => setYoutubeUrl(e.target.value)}
+            placeholder="Enter YouTube URL"
+          />
+          {youtubeUrl && (
+            <iframe
+              width="100%"
+              height="315"
+              src={`https://www.youtube.com/embed/${youtubeUrl.split("v=")[1]}`}
+              title="YouTube video player"
+              frameBorder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+            ></iframe>
+          )}
+        </>
+      ),
+    },
+  ];
   return (
     <>
       <main>
         <div className="mt-4">
           <section className="flex justify-center items-center mb-96">
             <div className="max-w-md w-full">
-              <Card className="rounded-xl overflow-hidden">
-                <CardHeader className="flex items-center justify-center">
-                  <Avatar src="/PFP.jpg" />
-                  <div className="mx-4 mb-2 flex-1">
-                    <h1 className="text-md font-sans">{url}</h1>
-                    <h1 className="text-md font-sans">{titleDynamic}</h1>
-                  </div>
-                </CardHeader>
-                <Divider />
-                <CardBody>
-                  <div>
-                    <Input
-                      type="text"
-                      color="secondary"
-                      value={title}
-                      onChange={(e) => setTitle(e.target.value)}
-                      placeholder="Enter Your Title Violet"
-                    />
-                    {isOpened ? (
-                      <Input
-                        type="file"
-                        accept="image/*"
-                        onChange={(e) => setPicture(e.target.value)}
-                        color="secondary"
-                      />
-                    ) : (
-                      <>
-                        <Input
-                          type="text"
-                          color="secondary"
-                          value={youtubeUrl}
-                          onChange={(e) => setYoutubeUrl(e.target.value)}
-                          placeholder="Enter YouTube URL"
-                        />
-                        {youtubeUrl && (
-                          <iframe
-                            width="100%"
-                            height="315"
-                            src={`https://www.youtube.com/embed/${
-                              youtubeUrl.split("v=")[1]
-                            }`}
-                            title="YouTube video player"
-                            frameBorder="0"
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                            allowFullScreen
-                          ></iframe>
-                        )}
-                      </>
-                    )}
-                    <Textarea
-                      label="message"
-                      color="secondary"
-                      value={message}
-                      onChange={(e) => setMessage(e.target.value)}
-                      placeholder="Enter Your Letter Violet✉️"
-                      className="w-full"
-                    />
-                  </div>
-                </CardBody>
-                <Divider />
-                <CardFooter>
-                  <div className="flex gap-4 mx-auto">
-                    <Button
-                      color="secondary"
-                      variant="solid"
-                      onClick={handleSave}
-                    >
-                      Send Mail
-                    </Button>
-                    <Button
-                      color="secondary"
-                      variant="bordered"
-                      onClick={handleKirim}
-                    >
-                      {isOpened ? (
-                        <MdOutlineMessage size="1.5rem" />
-                      ) : (
-                        <AiOutlinePicture size="1.5rem" />
-                      )}
-                    </Button>
-                  </div>
-                </CardFooter>
-              </Card>
+    <div className="flex w-full flex-col mt-4 ">
+      <Tabs aria-label="Dynamic tabs" items={tabs} className="mx-auto" color="secondary">
+        {(item) => (
+          <Tab key={item.id} title={item.label} >
+                      <Card className="rounded-xl overflow-hidden">
+                        <CardHeader className="flex items-center justify-center">
+                          <Avatar src="/PFP.jpg" />
+                          <div className="mx-4 mb-2 flex-1">
+                            <h1 className="text-md font-sans">{url}</h1>
+                            <h1 className="text-md font-sans ">
+                              {titleDynamic}
+                            </h1>
+                          </div>
+                        </CardHeader>
+                        <Divider />
+                        <CardBody>
+                          <div>
+                            <Input
+                              type="text"
+                              color="secondary"
+                              value={title}
+                              onChange={(e) => setTitle(e.target.value)}
+                              placeholder="Enter Your Title Violet"
+                            />
+                          </div>
+                          <div className="mt-4">
+                          {item.content}
+                          </div>
+                        </CardBody>
+                        <Divider />
+                        <CardFooter>
+                          <div className="flex gap-4 mx-auto">
+                            <Button
+                           
+                              color="secondary"
+                              variant="solid"
+                              onClick={handleSave}
+                            >
+                              Send Mail
+                            </Button>
+                          </div>
+                        </CardFooter>
+                      </Card>
+                            </Tab>
+                          )}
+                        </Tabs>
+                      </div>
             </div>
           </section>
         </div>

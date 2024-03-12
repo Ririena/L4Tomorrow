@@ -213,7 +213,7 @@ export default function MainMailParams() {
                     </Card>
                   </motion.div>
                   <div className="mt-4">
-                    {/* Card dengan Gambar */}
+                
                     {!loading && userEmail && mailData && showDetail && (
                       <>
                         <Card bordered shadow>
