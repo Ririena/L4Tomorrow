@@ -4,6 +4,7 @@ import {
   CardBody,
   CardFooter,
   Image,
+  Divider
 } from "@nextui-org/react";
 import { motion } from "framer-motion";
 export default function CardProduct(props) {
@@ -17,8 +18,9 @@ export default function CardProduct(props) {
       >
         <Card className="">
           <CardHeader>
-            <Image src={props.image} className="w-full" />
+            <Image src={props.image} alt="Test" className="w-full" />
           </CardHeader>
+          <Divider/>
           <CardBody className="w-full flex-1">
             <div className="m-3">
               <h1 className="font-montserrat text-2xl">Ranking Mail</h1>

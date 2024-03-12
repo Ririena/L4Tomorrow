@@ -15,7 +15,7 @@ import {
 import MainMailNotif from "../../components/Main/MainMailNotif";
 import { Spinner } from "@nextui-org/react";
 import ReactPlayer from "react-player";
-
+import {format} from "date-fns"
 export default function MainMailParams() {
   const [userData, setUserData] = useState(null);
   const [userEmail, setUserEmail] = useState("");
@@ -79,6 +79,11 @@ export default function MainMailParams() {
     setShowDetail(!showDetail);
   };
 
+
+  const formatDate = (dateString) => {
+    const date = new Date(dateString)
+    return format(date, 'MMMM dd, yyyy')
+  }
   return (
     <>
       <div></div>
@@ -133,19 +138,18 @@ export default function MainMailParams() {
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
-                  
-                      <Card shadow="lg" className=" pb-96">
-                        <CardHeader></CardHeader>
-                        <Divider />
-                        <CardBody>
-                          <div className="text-center mb-4">
-                            <p className="text-lg font-semibold capitalize">
-                              Dear Major ({userData.nama_user})
-                            </p>
-                          </div>
-                        </CardBody>
-                        <Divider />
-                      </Card>
+                    <Card shadow="lg" className=" pb-96">
+                      <CardHeader></CardHeader>
+                      <Divider />
+                      <CardBody>
+                        <div className="text-center mb-4">
+                          <p className="text-lg font-semibold capitalize">
+                            Dear Major ({userData.nama_user})
+                          </p>
+                        </div>
+                      </CardBody>
+                      <Divider />
+                    </Card>
                   </motion.div>
                 </motion.div>
               ) : (
@@ -197,7 +201,7 @@ export default function MainMailParams() {
                             Violet Evergarden
                           </p>
                           <p className="text-xs text-gray-400 ">
-                            March 11, 2024
+                          {formatDate(mailData.send_at)}
                           </p>
                         </div>
                         <Image
@@ -211,25 +215,34 @@ export default function MainMailParams() {
                   <div className="mt-4">
                     {/* Card dengan Gambar */}
                     {!loading && userEmail && mailData && showDetail && (
-                      <Card bordered shadow>
-                        <div className="mx-auto">
-                          <Image
-                            src="/violetP.jpg"
-                            alt="Sample Image"
-                            className="rounded-md size-96 object-contain"
-                          />
+                      <>
+                        <Card bordered shadow>
+                          <div className="mx-auto">
+                            <Image
+                              src="/violetP.jpg"
+                              alt="Sample Image"
+                              className="rounded-md size-96 object-contain"
+                            />
+                          </div>
+                          <CardBody>
+                            <Divider />
+                            <h3 className="text-lg font-semibold">
+                              Violet Pict
+                            </h3>
+                            <p>{mailData.message}</p>
+                          </CardBody>
+                        </Card>
+
+                        <div className="mt-4">
+                          <Card>
+                            <ReactPlayer
+                              url={videoUrl}
+                              controls={true}
+                              className=""
+                            />
+                          </Card>
                         </div>
-                        <CardBody>
-                          <Divider />
-                          <h3 className="text-lg font-semibold">Violet Pict</h3>
-                          <p>{mailData.message}</p>
-                          <ReactPlayer
-                            url={videoUrl}
-                            controls={true}
-                            className=""
-                          />
-                        </CardBody>
-                      </Card>
+                      </>
                     )}
                   </div>
                 </motion.div>

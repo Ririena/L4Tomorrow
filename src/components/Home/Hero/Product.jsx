@@ -10,7 +10,7 @@ export default function Product(props) {
         <section>
           <div>
             <section>
-              <div className="flex justify-center items-center mt-40">
+              <div className="flex justify-center items-center mt-20">
                 <h1 className="font-montserrat text-3xl bg-gradient-to-r from-violet-600 to-indigo-600 bg-clip-text text-transparent">
                   What's in Letter For Tomorrow
                 </h1>
@@ -36,7 +36,7 @@ export default function Product(props) {
               </div>
               <section className="mt-12">
                 <div className="flex justify-center">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-4">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">
                     <motion.div
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}

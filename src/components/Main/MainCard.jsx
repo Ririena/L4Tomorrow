@@ -102,30 +102,28 @@ export default function MainCard() {
           <Card className="rounded-lg overflow-hidden">
             <CardHeader>
               <div className="mx-auto rounded-lg">
-                <Image
-                  src="/PFP.jpg"
-                  alt="Profile Picture"
-                  size="lg"
-                />
+                <Image src="/PFP.jpg" alt="Profile Picture" size="lg" />
               </div>
             </CardHeader>
             <Divider />
             <CardBody className="p-6">
-              <h1 className="text-2xl font-bold mb-4 mx-auto">
+              <h1 className="text-violet-600 text-2xl font-bold mb-4 mx-auto">
                 {userData ? userData.title : ""}
               </h1>
               <Input
                 type="text"
                 placeholder="New Title"
                 value={title}
+                color="secondary"
+                variant="bordered"
                 onChange={handleTitleChange}
                 className="mb-4"
               />
               <Button
-                className="text-white"
                 onClick={handleAddData}
-                color="success"
-                variant="shadow"
+                color="secondary"
+                className="bg-violet-400 text-white"
+                variant="flat"
               >
                 Add New Title
               </Button>

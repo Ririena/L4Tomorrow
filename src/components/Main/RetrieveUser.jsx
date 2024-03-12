@@ -113,7 +113,7 @@ export default function RetrieveUser() {
                 </CardBody>
                 <CardFooter>
                   <div className="mx-auto">
-                    <Snippet>{`https://l4tomo/message/${existingUserName}.vercel.app`}</Snippet>
+                    <Snippet>{`https://l4tomo.vercel.app/message/${existingUserName}`}</Snippet>
                   </div>
                 </CardFooter>
               </Card>
@@ -133,12 +133,12 @@ export default function RetrieveUser() {
                
                       <a
                         href={`https://wa.me/?text=${encodeURIComponent(
-                          `L4TOMO/message/${existingUserName}.vercel.app`
+                          `https://l4tomo.vercel.app/message/${existingUserName}`
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <Button color="secondary" variant="shadow">
+                        <Button color="secondary" variant="flat" className="bg-violet-400 text-white">
                           Share on WhatsApp
                         </Button>
                       </a>
