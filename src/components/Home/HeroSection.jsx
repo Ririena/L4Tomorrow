@@ -5,6 +5,7 @@ import RetrieveUserFirst from "../Main/RetrieveUserFirst";
 import { supabase } from "../../utils/supabase";
 import { Grid, GridItem } from "@chakra-ui/react";
 import ParallaxImages from "./Hero/ParallaxImages"
+import Product from "./Hero/Product";
 async function retrieveUser() {
   try {
     const {
@@ -47,7 +48,8 @@ const HeroSection = () => {
   ];
 
   return (
-    <div className="bg-gray-100 py-20">
+    <main>
+    <div className="bg-violet-100 py-20">
 
       <div className="container mx-auto flex justify-between items-center">
         <motion.div
@@ -126,7 +128,13 @@ const HeroSection = () => {
         </div>
       </div>
       <RetrieveUserFirst />
+      <div className="mt-[206px]">
+      
+      </div>
     </div>
+    <Product/>
+    <div className="mb-96"></div>
+    </main>
   );
 };
 

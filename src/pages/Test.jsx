@@ -28,6 +28,7 @@ export default function Test() {
       <h2>User Email: {userEmail}</h2>
       {userData ? (
         <div>
+        <img src={userData.avatar}/>
           <h2>User Data:</h2>
           <ul>
             <h1>{userData.nama_user}</h1>

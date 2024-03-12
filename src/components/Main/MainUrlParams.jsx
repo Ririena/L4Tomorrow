@@ -13,7 +13,7 @@ import {
   Avatar,
   Textarea,
 } from "@nextui-org/react";
-import {Input as Inputc} from "@chakra-ui/react"
+import { Input as Inputc } from "@chakra-ui/react";
 import { v4 as uuidv4 } from "uuid";
 import { AiOutlinePicture } from "react-icons/ai";
 import { MdOutlineMessage } from "react-icons/md";
@@ -54,7 +54,7 @@ export default function MainUserParams() {
   const [userId, setUserId] = useState(null);
   const [title, setTitle] = useState("");
   const [message, setMessage] = useState("");
-  const [picture, setPicutre] = useState(null);
+  const [picture, setPicture] = useState(null);
   const [youtubeUrl, setYoutubeUrl] = useState(""); // State untuk menyimpan URL video YouTube
 
   const handleSubmit = async (e) => {
@@ -109,22 +109,22 @@ export default function MainUserParams() {
       console.log("Data Berhasil Dikirim", data);
     }
   };
-  
+
   const [isOpened, setIsOpened] = useState(false);
   const handleKirim = () => {
     setIsOpened(!isOpened);
   };
-  
+
   const eventFoto = (e) => {
     const selectedFile = e.target.files[0];
 
     if (selectedFile) {
-      setPicutre(selectedFile);
+      setPicture(selectedFile);
     } else {
       console.log("Tidak Ada File Yang Dipilih");
     }
   };
-  
+
   return (
     <>
       <main>
@@ -169,7 +169,9 @@ export default function MainUserParams() {
                           <iframe
                             width="100%"
                             height="315"
-                            src={`https://www.youtube.com/embed/${youtubeUrl.split("v=")[1]}`}
+                            src={`https://www.youtube.com/embed/${
+                              youtubeUrl.split("v=")[1]
+                            }`}
                             title="YouTube video player"
                             frameBorder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
