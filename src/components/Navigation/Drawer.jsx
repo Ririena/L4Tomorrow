@@ -36,7 +36,7 @@ export default function Draw() {
         <DrawerContent >
           <DrawerHeader
             borderBottom="1px "
-            className="bg-gradient-to-r from-violet-500 via-violet-600 to-violet-800  "
+            className="bg-gradient-to-r from-violet-600 via-violet-700 to-violet-800  "
           >
             <NavbarContent  justify="center">
               <NavbarBrand>
@@ -53,20 +53,20 @@ export default function Draw() {
               />
             </NavbarContent>
           </DrawerHeader>
-          <DrawerBody className="bg-gradient-to-r from-violet-500 via-violet-600 to-violet-800  text-white ">
+          <DrawerBody className="bg-gradient-to-r from-violet-600 via-violet-700 to-violet-800  text-white ">
    
 
-            <Button className="text-white font-montserrat  bg-violet-600  hover:bg-violet-900  w-full"  radius="small" color="secondary" variant="solid" >
+            <Button className="text-white font-montserrat  bg-violet-500  hover:bg-violet-900  w-full"  radius="small" color="secondary" variant="solid" >
               What's L4T?
             </Button>
-            <Button className="text-white font-montserrat  bg-violet-600  hover:bg-violet-900  w-full mt-4"  radius="small" color="secondary" variant="solid" >
+            <Button className="text-white font-montserrat  bg-violet-500  hover:bg-violet-900  w-full mt-4"  radius="small" color="secondary" variant="solid" >
               Safety Center
            
             </Button>
-            <Button  className="text-white font-montserrat  bg-violet-600  hover:bg-violet-900  w-full mt-4"  radius="small" color="secondary" variant="solid" >
+            <Button  className="text-white font-montserrat  bg-violet-500  hover:bg-violet-900  w-full mt-4"  radius="small" color="secondary" variant="solid" >
               Faq
             </Button>
-            <Button className="text-white font-montserrat  bg-violet-600  hover:bg-violet-900  w-full mt-4"  radius="small" color="secondary" variant="solid" ><a href="/login">Login</a>
+            <Button className="text-white font-montserrat  bg-violet-500  hover:bg-violet-900  w-full mt-4"  radius="small" color="secondary" variant="solid" ><a href="/login">Login</a>
               
             </Button>
           </DrawerBody>

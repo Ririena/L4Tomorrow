@@ -17,34 +17,34 @@ export default function Header() {
     <>
       <main>
         <section>
-          <Navbar className="shadow-sm p-2">
+          <Navbar className="bg-gradient-to-r from-violet-600 via-violet-700 to-violet-800  text-white ">
             <NavbarBrand>
-              <p className="font-bold text-inherit">Letter4T</p>
+              <p className="font-bold text-white text-xl">Letter4T</p>
             </NavbarBrand>
             <NavbarContent className="hidden sm:flex gap-4" justify="center">
               <NavbarItem>
-                <Link color="foreground" href="/about">
+                <Link href="/about" className="text-white">
                   What's L4T?
                 </Link>
               </NavbarItem>
               <NavbarItem isActive>
-                <Link href="#" aria-current="page">
+                <Link href="#" aria-current="page" className="text-violet-300">
                   Safety Center
                 </Link>
               </NavbarItem>
               <NavbarItem>
-                <Link color="foreground" href="/faq">
+                <Link color="foreground" href="/faq" className="text-white">
                   FAQ
                 </Link>
               </NavbarItem>
             </NavbarContent>
 
             <NavbarContent justify="end">
-              <NavbarItem className="hidden lg:flex">
-                <Link href="/login">Login</Link>
+              <NavbarItem className="hidden lg:flex ">
+                <Link href="/login" className="text-slate-200">Login</Link>
               </NavbarItem>
               <NavbarItem>
-                <Button as={Link} color="primary" href="/register" variant="flat">
+                <Button as={Link}   href="/register" variant="solid" className="text-violet-800 bg-violet-400" >
                   Sign Up
                 </Button>
               </NavbarItem>
