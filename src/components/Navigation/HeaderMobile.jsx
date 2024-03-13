@@ -44,7 +44,7 @@ export default function HeaderMobile() {
 
   return (
     <div>
-      <Navbar className="shadow-sm">
+      <Navbar className="shadow-sm bg-gradient-to-r from-violet-500 to-violet-700">
         <NavbarBrand>
           <p className="font-bold text-inherit">L4Tomorrow</p>
         </NavbarBrand>
