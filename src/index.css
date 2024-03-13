@@ -3,3 +3,30 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* Tambahkan styling ini pada file CSS Anda */
+
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(255, 255, 255, 0.8); /* Ubah nilai alpha untuk transparansi */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+  }
+  
+  .loader-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .loader-container p {
+    margin-top: 10px;
+    font-size: 14px;
+  }
+  

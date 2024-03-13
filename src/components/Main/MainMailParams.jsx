@@ -15,7 +15,7 @@ import {
 import MainMailNotif from "../../components/Main/MainMailNotif";
 import { Spinner } from "@nextui-org/react";
 import ReactPlayer from "react-player";
-
+import { format } from "date-fns";
 export default function MainMailParams() {
   const [userData, setUserData] = useState(null);
   const [userEmail, setUserEmail] = useState("");
@@ -24,7 +24,7 @@ export default function MainMailParams() {
   const [showDetail, setShowDetail] = useState(false);
   const [videoUrl, setVideoUrl] = useState(false);
   const [isWaxLoaded, setIsWaxLoaded] = useState(false);
-
+  const [image, setImage] = useState(null);
   const { mailId } = useParams();
 
   useEffect(() => {
@@ -60,6 +60,16 @@ export default function MainMailParams() {
         }
 
         setMailData(data);
+
+        const res = await supabase.storage
+          .from("gambar/picture")
+          .getPublicUrl(data.gambar);
+
+        if (res.error) {
+          console.error(res.error.message);
+        } else {
+          setImage(res.data.publicUrl);
+        }
         if (data?.video) {
           setVideoUrl(data.video);
         }
@@ -79,6 +89,10 @@ export default function MainMailParams() {
     setShowDetail(!showDetail);
   };
 
+  const formatDate = (dateString) => {
+    const date = new Date(dateString);
+    return format(date, "MMMM dd, yyyy");
+  };
   return (
     <>
       <div></div>
@@ -105,7 +119,7 @@ export default function MainMailParams() {
               {!showDetail ? (
                 <motion.div
                   key="mailPreview"
-                  className="max-w-md lg:max-w-[600px] xl:max-w-[600px] w-full mx-auto relative overflow-visible"
+                  className="mt-16 shadow-xl max-w-md lg:max-w-[600px] xl:max-w-[600px] w-full mx-auto relative overflow-visible "
                   initial={{ opacity: 0, y: 50 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: 50 }}
@@ -133,7 +147,7 @@ export default function MainMailParams() {
                     animate={{ y: 0, opacity: 1 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
                   >
-                    <Card bordered shadow>
+                    <Card shadow="lg" className=" pb-96">
                       <CardHeader></CardHeader>
                       <Divider />
                       <CardBody>
@@ -196,7 +210,7 @@ export default function MainMailParams() {
                             Violet Evergarden
                           </p>
                           <p className="text-xs text-gray-400 ">
-                            March 11, 2024
+                            {formatDate(mailData.send_at)}
                           </p>
                         </div>
                         <Image
@@ -208,27 +222,35 @@ export default function MainMailParams() {
                     </Card>
                   </motion.div>
                   <div className="mt-4">
-                    {/* Card dengan Gambar */}
                     {!loading && userEmail && mailData && showDetail && (
-                      <Card bordered shadow>
-                        <div className="mx-auto">
-                          <Image
-                            src="/violetP.jpg"
-                            alt="Sample Image"
-                            className="rounded-md size-96 object-contain"
-                          />
+                      <>
+                        <Card bordered shadow>
+                          <div className="mx-auto">
+                            <Image
+                              src={image}
+                              alt="Sample Image"
+                              className="rounded-md size-96 object-contain"
+                            />
+                          </div>
+                          <CardBody>
+                            <Divider />
+                            <h3 className="text-lg font-semibold">
+                              Violet Pict
+                            </h3>
+                            <p>{mailData.message}</p>
+                          </CardBody>
+                        </Card>
+
+                        <div className="mt-4">
+                          <Card>
+                            <ReactPlayer
+                              url={videoUrl}
+                              controls={true}
+                              className=""
+                            />
+                          </Card>
                         </div>
-                        <CardBody>
-                          <Divider />
-                          <h3 className="text-lg font-semibold">Violet Pict</h3>
-                          <p>{mailData.message}</p>
-                          <ReactPlayer
-                            url={videoUrl}
-                            controls={true}
-                            className=""
-                          />
-                        </CardBody>
-                      </Card>
+                      </>
                     )}
                   </div>
                 </motion.div>

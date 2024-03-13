@@ -85,6 +85,7 @@ export default function RetrieveUser() {
       console.error(error.message);
     }
   };
+  
 
   // Menampilkan loader jika data sedang diambil
   // if (isLoading) {
@@ -99,7 +100,7 @@ export default function RetrieveUser() {
       <section>
         <div className="mt-4">
           <section className="flex justify-center items-center">
-            <div className="max-w-md w-full">
+            <div className="max-w-md lg:max-w-lg xl:max-w-lg w-full">
               <Card className="rounded-lg overflow-hidden">
                 <CardHeader>
                   <section className="mx-auto font-semibold">
@@ -113,7 +114,7 @@ export default function RetrieveUser() {
                 </CardBody>
                 <CardFooter>
                   <div className="mx-auto">
-                    <Snippet>{`https://l4tomo/message/${existingUserName}.vercel.app`}</Snippet>
+                    <Snippet>{`https://l4tomo.vercel.app/message/${existingUserName}`}</Snippet>
                   </div>
                 </CardFooter>
               </Card>
@@ -133,12 +134,12 @@ export default function RetrieveUser() {
                
                       <a
                         href={`https://wa.me/?text=${encodeURIComponent(
-                          `L4TOMO/message/${existingUserName}.vercel.app`
+                          `https://l4tomo.vercel.app/message/${existingUserName}`
                         )}`}
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        <Button color="secondary" variant="shadow">
+                        <Button color="secondary" variant="flat" className="bg-violet-400 text-white">
                           Share on WhatsApp
                         </Button>
                       </a>

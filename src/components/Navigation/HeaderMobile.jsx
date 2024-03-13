@@ -13,28 +13,32 @@ import {
   DropdownItem,
   Avatar,
 } from "@nextui-org/react";
-
+import { getUserByEmail, getUserFromTable } from "../../libs/UserLibs";
 import { supabase } from "../../utils/supabase";
 import { useState, useEffect } from "react";
 
 export default function HeaderMobile() {
   const [userData, setUserData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [userEmail, setUserEmail] = useState("");
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const {
-          data: { user },
-          error,
-        } = await supabase.auth.getUser();
-        if (error) {
-          throw error;
-        }
-        setUserData(user);
+        // Mendapatkan data pengguna dari autentikasi
+        const user = await getUserByEmail();
+        setUserEmail(user.email);
+
+        // Mendapatkan data pengguna dari tabel user
+        const userDataFromTable = await getUserFromTable(user.email);
+        setUserData(userDataFromTable);
+        setLoading(false);
       } catch (error) {
-        console.error("Error:", error.message);
+        console.error("Error fetching user data:", error.message);
+        setLoading(false);
       }
     };
+
     fetchUserData();
   }, []);
 
@@ -71,8 +75,8 @@ export default function HeaderMobile() {
                 className="transition-transform"
                 color="secondary"
                 name="Jason Hughes"
-                size="sm"
-                src="/PFP.jpg"
+                size="md"
+                src={userData ? userData.avatar : "/PFP.jpg"}
               />
             </DropdownTrigger>
             <DropdownMenu aria-label="Profile Actions" variant="flat">
