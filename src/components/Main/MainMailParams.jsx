@@ -15,7 +15,7 @@ import {
 import MainMailNotif from "../../components/Main/MainMailNotif";
 import { Spinner } from "@nextui-org/react";
 import ReactPlayer from "react-player";
-import {format} from "date-fns"
+import { format } from "date-fns";
 export default function MainMailParams() {
   const [userData, setUserData] = useState(null);
   const [userEmail, setUserEmail] = useState("");
@@ -24,7 +24,7 @@ export default function MainMailParams() {
   const [showDetail, setShowDetail] = useState(false);
   const [videoUrl, setVideoUrl] = useState(false);
   const [isWaxLoaded, setIsWaxLoaded] = useState(false);
-
+  const [image, setImage] = useState(null);
   const { mailId } = useParams();
 
   useEffect(() => {
@@ -60,6 +60,16 @@ export default function MainMailParams() {
         }
 
         setMailData(data);
+
+        const res = await supabase.storage
+          .from("gambar/picture")
+          .getPublicUrl(data.gambar);
+
+        if (res.error) {
+          console.error(res.error.message);
+        } else {
+          setImage(res.data.publicUrl);
+        }
         if (data?.video) {
           setVideoUrl(data.video);
         }
@@ -79,11 +89,10 @@ export default function MainMailParams() {
     setShowDetail(!showDetail);
   };
 
-
   const formatDate = (dateString) => {
-    const date = new Date(dateString)
-    return format(date, 'MMMM dd, yyyy')
-  }
+    const date = new Date(dateString);
+    return format(date, "MMMM dd, yyyy");
+  };
   return (
     <>
       <div></div>
@@ -201,7 +210,7 @@ export default function MainMailParams() {
                             Violet Evergarden
                           </p>
                           <p className="text-xs text-gray-400 ">
-                          {formatDate(mailData.send_at)}
+                            {formatDate(mailData.send_at)}
                           </p>
                         </div>
                         <Image
@@ -213,13 +222,12 @@ export default function MainMailParams() {
                     </Card>
                   </motion.div>
                   <div className="mt-4">
-                
                     {!loading && userEmail && mailData && showDetail && (
                       <>
                         <Card bordered shadow>
                           <div className="mx-auto">
                             <Image
-                              src="/violetP.jpg"
+                              src={image}
                               alt="Sample Image"
                               className="rounded-md size-96 object-contain"
                             />

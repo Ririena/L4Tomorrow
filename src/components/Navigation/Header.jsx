@@ -79,7 +79,7 @@ export default function Header() {
                     className="hidden lg:flex xl:flex text-white"
                     color="white"
                     href="/register"
-                    variant="flat"
+                    variant="light"
                   >
                     Sign Up
                   </Button>
