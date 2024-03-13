@@ -97,16 +97,15 @@ export default function MainCard() {
 
   return (
     <main>
-      <section className="flex justify-center mt-12 items-center bg-gray-100">
-        <div className="max-w-md">
-          <Card bordered className="rounded-lg overflow-hidden">
+      <section className="flex justify-center mt-12 items-center">
+        <div className="max-w-md lg:max-w-lg xl:max-w-lg">
+          <Card className="rounded-lg overflow-hidden">
             <CardHeader>
               <div className="mx-auto rounded-lg">
                 <Image
                   src="/PFP.jpg"
                   alt="Profile Picture"
                   size="lg"
-                  bordered
                 />
               </div>
             </CardHeader>

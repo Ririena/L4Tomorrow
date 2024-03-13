@@ -30,6 +30,17 @@ export const getUserFromTable = async (email) => {
       throw error;
     }
 
+if(data) {
+  const {data: avatarData, error: avatarError} = await supabase.storage.from("avatar").getPublicUrl(data.avatar)
+
+  if (avatarError) {
+    throw avatarError;
+  }
+
+  if (avatarData) {
+    data.avatar = avatarData.publicUrl;
+  }
+} 
     return data;
   } catch (error) {
     console.error("Error fetching user from table:", error.message);

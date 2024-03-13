@@ -10,6 +10,7 @@ import {
   Link,
   Button,
 } from "@nextui-org/react";
+import Draw from "./Drawer";
 
 export default function Header() {
   return (
@@ -47,6 +48,7 @@ export default function Header() {
                   Sign Up
                 </Button>
               </NavbarItem>
+            <Draw/>
             </NavbarContent>
           </Navbar>
         </section>

@@ -16,6 +16,7 @@ import {
 
 import { supabase } from "../../utils/supabase";
 import { useState, useEffect } from "react";
+import { Modal } from "antd";
 
 export default function HeaderMobile() {
   const [userData, setUserData] = useState(null);
@@ -73,7 +74,6 @@ const handleLogOut = async()=>{
           <Dropdown placement="bottom-end">
             <DropdownTrigger>
               <Avatar
-                isBordered
                 as="button"
                 className="transition-transform"
                 color="secondary"
@@ -91,7 +91,7 @@ const handleLogOut = async()=>{
               </DropdownItem>
               <DropdownItem key="settings">My Settings</DropdownItem>
               <DropdownItem key="team_settings">My Mail</DropdownItem>
-
+              <DropdownItem key="avatar" >Edit Profile</DropdownItem>
               <DropdownItem key="logout" color="danger"><button onClick={handleLogOut}>
 
                 Log Out
