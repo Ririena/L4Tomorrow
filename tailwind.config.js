@@ -8,8 +8,9 @@ export default {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    screen: {
-      'xs': '320px',
+    screens: {
+
+      "xs": '320px',
       'sm': '640px',
       // => @media (min-width: 640px) { ... }
 

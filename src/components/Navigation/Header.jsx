@@ -46,10 +46,7 @@ export default function Header() {
               <NavbarBrand>
                 <p className="font-bold text-white">Letter4T</p>
               </NavbarBrand>
-              <NavbarContent
-                className="hidden  text-white sm:flex gap-4"
-                justify="center"
-              >
+              <NavbarContent className="hidden sm:flex gap-4 justify-center">
                 <NavbarItem>
                   <Link color="foreground" className="text-white" href="/about">
                     What's L4T?
@@ -67,7 +64,7 @@ export default function Header() {
                 </NavbarItem>
               </NavbarContent>
 
-              <NavbarContent justify="end">
+              <NavbarContent className="justify-end">
                 <NavbarItem className="hidden lg:flex">
                   <Link href="/login" className="text-white">
                     Login

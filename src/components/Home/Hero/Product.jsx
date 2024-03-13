@@ -46,7 +46,6 @@ const [isCardVisible, setIsCardVisible] = useState(false)
             <div className="flex justify-center">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-8">
                 <motion.div
-                  variants={itemVariants}
                   initial="hidden"
                   animate="visible"
                   whileHover={{ scale: 1.05 }}
@@ -61,7 +60,6 @@ const [isCardVisible, setIsCardVisible] = useState(false)
                   />
                 </motion.div>
                 <motion.div
-                  variants={itemVariants}
                   initial="hidden"
                   animate="visible"
                   whileHover={{ scale: 1.05 }}
@@ -76,7 +74,6 @@ const [isCardVisible, setIsCardVisible] = useState(false)
                   />
                 </motion.div>
                 <motion.div
-                  variants={itemVariants}
                   initial="hidden"
                   animate="visible"
                   whileHover={{ scale: 1.05 }}
