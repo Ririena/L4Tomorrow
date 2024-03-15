@@ -12,7 +12,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <AppWrapper>
       <BrowserRouter>
-        <App />
+        <App className="font-montserrat" />
       </BrowserRouter>
     </AppWrapper>
 </React.StrictMode>

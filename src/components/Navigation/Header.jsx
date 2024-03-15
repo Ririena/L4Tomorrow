@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState,  useEffect, useRef } from "react";
 import {
   Navbar,
   NavbarBrand,
@@ -27,11 +27,15 @@ import {
 } from "@chakra-ui/react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { FiArrowRight, FiArrowLeft } from "react-icons/fi";
-
+import { useTheme } from "next-themes";
 export default function Header() {
   const [navbarVisible, setNavbarVisible] = useState(true);
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
+
+  useEffect(() => {
+    setMounted(true)
+  }, [])
 
   const toggleNavbar = () => {
     setNavbarVisible(!navbarVisible);

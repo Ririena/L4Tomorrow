@@ -6,6 +6,7 @@ import {
   Image,
   Divider,
 } from "@nextui-org/react";
+
 import { motion } from "framer-motion";
 export default function CardProduct(props) {
   return (
