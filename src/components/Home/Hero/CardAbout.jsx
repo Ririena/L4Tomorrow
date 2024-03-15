@@ -17,6 +17,7 @@ export default function CardAbout() {
       <div>
         <Card className="max-w-sm md:max-w-md lg:xl:max-w-lg">
         <Image src="/violetP.jpg" className="object-cover "/>
+        <h1>Hello</h1>
         </Card>
       </div>
     </>
