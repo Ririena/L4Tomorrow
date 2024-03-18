@@ -126,7 +126,7 @@ export default function MainMailParams() {
                   transition={{ duration: 0.5 }}
                 >
                   <motion.div
-                    className={`absolute top-0 left-[202px] lg:left-[271px] xl:left-[280px] ${
+                    className={`left-[202px] xs:left-[170px] sm:left-[202px] absolute top-0  lg:left-[271px] xl:left-[280px] ${
                       isWaxLoaded ? "block z-10" : "hidden"
                     }`}
                     whileHover={{ scale: 1.1 }}
@@ -134,6 +134,7 @@ export default function MainMailParams() {
                     onClick={handleShowDetail}
                   >
                     <Image
+                    className="cursor-pointer"
                       onLoad={() => setIsWaxLoaded(true)}
                       src="/WAX.png"
                       height={45}
