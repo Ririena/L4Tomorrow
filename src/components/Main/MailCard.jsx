@@ -78,8 +78,8 @@ export default function Mail() {
       <main>
         <section>
           {receiverData && (
-            <div className="flex justify-center items-center ">
-              <ul className="max-w-sm md:max-w-md lg:xl:max-w-lg grid grid-cols-1 md:grid-cols-2 lg:xl:grid-cols-3  gap-4 m-4">
+            <div className=" flex justify-center items-center ">
+              <ul className=" grid grid-cols-1 md:grid-cols-2 lg:xl:grid-cols-3  gap-4 m-4">
                 {receiverData.map((message) => (
                   <li key={message.id} className="flex justify-center">
                     <motion.section
