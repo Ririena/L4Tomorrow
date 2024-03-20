@@ -61,9 +61,7 @@ export default function HeaderMobile() {
           <ModalHeader>Settings</ModalHeader>
           <ModalCloseButton />
           <ModalBody>
-          <div>
-          
-          </div>
+            <div></div>
           </ModalBody>
 
           <ModalFooter>
@@ -77,22 +75,27 @@ export default function HeaderMobile() {
       <div>
         <Navbar className="shadow-sm bg-gradient-to-r from-violet-500 to-violet-700">
           <NavbarBrand>
-            <p className="font-bold text-inherit">L4Tomorrow</p>
+            <p className="font-bold text-inherit text-slate-200">L4Tomorrow</p>
           </NavbarBrand>
 
           <NavbarContent className="hidden sm:flex gap-4" justify="center">
             <NavbarItem>
-              <Link color="foreground" href="/me">
+              <Link color="" className="text-purple-100" href="/me">
                 Main
               </Link>
             </NavbarItem>
             <NavbarItem isActive>
-              <Link href="/me/mail" aria-current="page" color="secondary">
+              <Link
+                href="/me/mail"
+                className="text-purple-100"
+                aria-current="page"
+                color="secondary"
+              >
                 My Mail
               </Link>
             </NavbarItem>
             <NavbarItem>
-              <Link color="foreground" href="#">
+              <Link color="foreground" className="text-purple-100" href="#">
                 Integrations
               </Link>
             </NavbarItem>

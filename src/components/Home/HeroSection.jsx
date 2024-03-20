@@ -1,5 +1,13 @@
 import React, { useEffect } from "react";
-import { Card, Button, Image, Link, CardFooter } from "@nextui-org/react";
+import {
+  Card,
+  Button,
+  Image,
+  Link,
+  CardFooter,
+  Divider,
+  CardBody,
+} from "@nextui-org/react";
 import { motion } from "framer-motion";
 import RetrieveUserFirst from "../Main/RetrieveUserFirst";
 import { supabase } from "../../utils/supabase";
@@ -31,7 +39,7 @@ const HeroSection = () => {
   return (
     <>
       <main>
-        <div className="bg-gradient-to-r from-violet-800 to-indigo-900 py-20 ">
+        <div className="shadow-xl bg-gradient-to-r from-violet-800 to-indigo-900 py-20 ">
           <div className="flex flex-col md:flex-row justify-between items-center mx-auto">
             <div className="max-w-lg mx-4 text-white text-center md:text-left mb-8 md:mb-0">
               <motion.div
@@ -120,6 +128,7 @@ const HeroSection = () => {
             </div>
           </div>
         </div>
+        <Divider className="" />
 
         <div className="flex justify-center items-center mt-12">
           <h1 className="font-bold font-montserrat text-4xl">What's In L4T?</h1>
@@ -130,14 +139,46 @@ const HeroSection = () => {
           </h1>
         </div>
 
-        <div className="flex justify-center items-center">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:xlgrid-cols-3 gap-20">
-            <CardAbout />
-            <CardAbout />
-            <CardAbout />
+        <div className="flex justify-center items-center mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-20">
+            <CardAbout
+              image="/cards/card.png"
+              content="Strengthen your relationships by sending heartfelt messages."
+            />
+            <CardAbout
+              image="/cards/card2.jpg"
+              content="Share your thoughts and emotions with beautifully crafted letters."
+            />
+            <CardAbout
+              image="/cards/card3.jpg"
+              content="Create lasting memories through the art of letter writing"
+            />
           </div>
         </div>
         <div className="mb-32"></div>
+        <div className="bg-violet-400">
+          <section className="flex flex-col md:flex-row justify-between items-center mx-auto">
+            <div className="max-w-[900px]">
+              <div className="mx-[148px] my-[100px] ">
+                <h1 className="font-montserrat text-md md:text-lg lg:xl:text-2xl font-semibold text-violet-50">
+                  "You Will Be Able To Express Your Own Emotion With Letter
+                  Tomorrow And Also Better Relationship(Optional)"
+                </h1>
+              </div>
+            </div>
+            <div className="flex justify-end">
+              <Card className="mr-[120px]">
+                <div>
+                  <Image
+                    src="/violetP.jpg"
+                    className="object-cover "
+                    width={400}
+                  />
+                </div>
+              </Card>
+            </div>
+          </section>
+        </div>
       </main>
     </>
   );
