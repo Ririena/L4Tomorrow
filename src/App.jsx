@@ -13,9 +13,9 @@ import NotFounds from "./pages/NotFounds";
 import MailId from "./pages/MailId";
 import RetrieveUserFirst from "./components/Main/RetrieveUserFirst";
 import Rank from "./pages/Rank";
-import Dashboard from "./pages/Dashboard";
 import Edit from "./pages/Edit";
 import LayoutsAdmin from "./components/Layout/LayoutsAdmin";
+import Admin from "./pages/Admin";
 const withLayout = (LayoutComponent, ChildComponent) => {
   return (props) => (
     <LayoutComponent>
@@ -24,7 +24,7 @@ const withLayout = (LayoutComponent, ChildComponent) => {
   );
 };
 
-const AdminWithLayout = withLayout(LayoutsAdmin, Dashboard);
+const AdminWithLayout = withLayout(LayoutsAdmin, Admin);
 const HomeWithLayout = withLayout(Layouts, Home);
 const MeWithLayout = withLayout(LayoutsUser, Me);
 
@@ -32,14 +32,14 @@ export default function App() {
   return (
     <Routes>
       <Route path="/" element={<MeWithLayout />}>
-      <Route index element={<Home />} />
+        <Route index element={<Home />} />
         <Route path="edit" element={<Edit />} />
+        <Route path="admin" element={<Admin />} />
+
         <Route path="test" element={<Test />} />
-      <Route path="rank" element={<Rank />} />
+        <Route path="rank" element={<Rank />} />
       </Route>
-      <Route path="admin" element={<LayoutsAdmin />}>
-        <Route index element={<Dashboard />} />
-      </Route>
+ 
       <Route path="login" element={<Login />} />
 
       <Route path="verified" element={<RetrieveUserFirst />} />

@@ -72,8 +72,7 @@ export default function HeaderMobile() {
           </ModalFooter>
         </ModalContent>
       </Modal>
-      <div>
-        <Navbar className="shadow-sm bg-gradient-to-r from-violet-500 to-violet-700">
+        <Navbar isBordered className="shadow-sm bg-gradient-to-r from-violet-500 to-violet-700">
           <NavbarBrand>
             <p className="font-bold text-inherit text-slate-200">L4Tomorrow</p>
           </NavbarBrand>
@@ -132,7 +131,6 @@ export default function HeaderMobile() {
             </Dropdown>
           </NavbarContent>
         </Navbar>
-      </div>
     </>
   );
 }

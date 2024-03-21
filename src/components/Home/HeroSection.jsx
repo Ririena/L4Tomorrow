@@ -12,7 +12,8 @@ import { motion } from "framer-motion";
 import RetrieveUserFirst from "../Main/RetrieveUserFirst";
 import { supabase } from "../../utils/supabase";
 import CardAbout from "./Hero/CardAbout";
-
+import CardWorks from "./Hero/CardWorks"
+import { TypeAnimation } from "react-type-animation";
 const HeroSection = () => {
   useEffect(() => {
     async function retrieveUser() {
@@ -160,10 +161,22 @@ const HeroSection = () => {
           <section className="flex flex-col md:flex-row justify-between items-center mx-auto">
             <div className="max-w-[900px]">
               <div className="mx-[148px] my-[100px] ">
-                <h1 className="font-montserrat text-md md:text-lg lg:xl:text-2xl font-semibold text-violet-50">
-                  "You Will Be Able To Express Your Own Emotion With Letter
-                  Tomorrow And Also Better Relationship(Optional)"
+                <h1 className="font-montserrat text-md md:text-lg lg:xl:text-2xl font-medium">
+                  <TypeAnimation
+                    sequence={[
+                      "Orang Yang Mencintaimu adalah orang yang selalu Mengawasimu",
+                      5000,
+                      "Orang",
+                      1000,
+                    ]}
+                    speed={50}
+                    repeat={Infinity}
+                  />
                 </h1>
+
+                <h2 className="text-lg mt-4 font-montserrat font-semibold">
+                  Violet Evergarden
+                </h2>
               </div>
             </div>
             <div className="flex justify-end">
@@ -171,7 +184,7 @@ const HeroSection = () => {
                 <div>
                   <Image
                     src="/violetP.jpg"
-                    className="object-cover "
+                    className="xs:sm:block hidden object-cover "
                     width={400}
                   />
                 </div>
@@ -179,6 +192,24 @@ const HeroSection = () => {
             </div>
           </section>
         </div>
+
+        <Divider className="" />
+        <div className="mt-[90px] "></div>
+        <h1 className="text-center text-3xl font-semibold  font-montserrat">
+          How it Works
+        </h1>
+        <div className="flex justify-center items-center mt-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-20">
+      <CardWorks/>
+      <CardWorks/>
+      <CardWorks/>
+          </div>
+        </div>
+        <section className="flex justify-between">
+          <div>
+            <h1>Hello</h1>
+          </div>
+        </section>
       </main>
     </>
   );

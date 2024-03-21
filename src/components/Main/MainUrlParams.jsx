@@ -135,14 +135,18 @@ export default function MainUserParams() {
             id="avatar"
           />
 
-          <Button color="secondary" variant="ghost">
-          <label
-            htmlFor="avatar"
-            className="cursor-pointer  px-4 py-2 rounded-md text-sm"
+          <Button
+            color="secondary"
+            variant="flat"
+            className="max-w-full w-full"
           >
-            Upload Avatar
-          </label>
-        </Button>
+            <label
+              htmlFor="avatar"
+              className="cursor-pointer   px-4 py-2 rounded-md text-sm"
+            >
+              Upload Avatar
+            </label>
+          </Button>
         </>
       ),
     },
