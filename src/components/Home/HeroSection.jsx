@@ -180,7 +180,7 @@ const HeroSection = () => {
               </div>
             </div>
             <div className="flex justify-end">
-              <Card className="mr-[120px]">
+              <Card className="mr-[121px]">
                 <div>
                   <Image
                     src="/violetP.jpg"
