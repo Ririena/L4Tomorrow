@@ -185,7 +185,7 @@ const HeroSection = () => {
                   <Image
                     src="/violetP.jpg"
                     className="xs:sm:block hidden object-cover "
-                    width={600}
+                    width={400}
                   />
                 </div>
               </Card>
