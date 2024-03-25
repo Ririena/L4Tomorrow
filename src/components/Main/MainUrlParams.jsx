@@ -125,17 +125,34 @@ export default function MainUserParams() {
       id: "photos",
       label: "Gambar",
       content: (
-        <Input
-          type="file"
-          accept="image/*"
-          onChange={(e) => setPicture(e.target.files[0])}
-          color="secondary"
-        />
+        <>
+          <input
+            type="file"
+            accept="image/*"
+            onChange={(e) => setPicture(e.target.files[0])}
+            color="secondary"
+            className="hidden"
+            id="avatar"
+          />
+
+          <Button
+            color="secondary"
+            variant="flat"
+            className="max-w-full w-full"
+          >
+            <label
+              htmlFor="avatar"
+              className="cursor-pointer   px-4 py-2 rounded-md text-sm"
+            >
+              Upload Avatar
+            </label>
+          </Button>
+        </>
       ),
     },
     {
       id: "Text",
-      label: "Text" ,
+      label: "Text",
       content: (
         <Textarea
           label="message"
@@ -180,10 +197,15 @@ export default function MainUserParams() {
         <div className="mt-4">
           <section className="flex justify-center items-center mb-96">
             <div className="max-w-md w-full">
-    <div className="flex w-full flex-col mt-4 ">
-      <Tabs aria-label="Dynamic tabs" items={tabs} className="mx-auto" color="secondary">
-        {(item) => (
-          <Tab key={item.id} title={item.label} >
+              <div className="flex w-full flex-col mt-4 ">
+                <Tabs
+                  aria-label="Dynamic tabs"
+                  items={tabs}
+                  className="mx-auto"
+                  color="secondary"
+                >
+                  {(item) => (
+                    <Tab key={item.id} title={item.label}>
                       <Card className="rounded-xl overflow-hidden">
                         <CardHeader className="flex items-center justify-center">
                           <Avatar src="/PFP.jpg" />
@@ -205,15 +227,12 @@ export default function MainUserParams() {
                               placeholder="Enter Your Title Violet"
                             />
                           </div>
-                          <div className="mt-4">
-                          {item.content}
-                          </div>
+                          <div className="mt-4">{item.content}</div>
                         </CardBody>
                         <Divider />
                         <CardFooter>
                           <div className="flex gap-4 mx-auto">
                             <Button
-                           
                               color="secondary"
                               variant="solid"
                               onClick={handleSave}
@@ -223,10 +242,10 @@ export default function MainUserParams() {
                           </div>
                         </CardFooter>
                       </Card>
-                            </Tab>
-                          )}
-                        </Tabs>
-                      </div>
+                    </Tab>
+                  )}
+                </Tabs>
+              </div>
             </div>
           </section>
         </div>
