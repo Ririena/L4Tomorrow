@@ -8,27 +8,7 @@ export default {
     "./node_modules/@nextui-org/theme/dist/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    screens: {
-
-      "xs": '320px',
-      'sm': '640px',
-      // => @media (min-width: 640px) { ... }
-
-      'md': '768px',
-      // => @media (min-width: 768px) { ... }
-
-      'lg': '1024px',
-      // => @media (min-width: 1024px) { ... }
-
-      'xl': '1280px',
-      // => @media (min-width: 1280px) { ... }
-
-      '2xl': '1536px',
-    },
     extend: {
-      fontFamily: {
-'montserrat': ["Montserrat", "sans-serif"]
-      },
       colors: {
         violet: {
           50: "#F5F3FF",
@@ -76,6 +56,7 @@ export default {
         },
         light: {
           colors: {
+            background: "#fefcfd", // or DEFAULT
             foreground: "#11181C", // or 50 to 900 DEFAULT
             primary: {
               //... 50 to 900
@@ -92,7 +73,7 @@ export default {
               foreground: "#FFFFFF",
               DEFAULT: "#6c21e1",
             },
-
+            
             // ... rest of the colors
           },
         },

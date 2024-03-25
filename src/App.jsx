@@ -16,6 +16,8 @@ import Rank from "./pages/Rank";
 import Edit from "./pages/Edit";
 import LayoutsAdmin from "./components/Layout/LayoutsAdmin";
 import Admin from "./pages/Admin";
+import RichTextEditor from "./pages/RichTextEditor";
+import PostViewer from "./pages/PostViewer";
 const withLayout = (LayoutComponent, ChildComponent) => {
   return (props) => (
     <LayoutComponent>
@@ -35,9 +37,10 @@ export default function App() {
         <Route index element={<Home />} />
         <Route path="edit" element={<Edit />} />
         <Route path="admin" element={<Admin />} />
-
+        <Route path="editor" element={<RichTextEditor/>}/>
         <Route path="test" element={<Test />} />
         <Route path="rank" element={<Rank />} />
+        <Route path="view" element={<PostViewer/>}/>
       </Route>
  
       <Route path="login" element={<Login />} />

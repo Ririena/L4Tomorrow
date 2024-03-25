@@ -1,7 +1,7 @@
 import { defineConfig } from "vite";
 import { VitePWA } from "vite-plugin-pwa";
 import react from "@vitejs/plugin-react";
-
+import path from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   server: {
@@ -10,12 +10,13 @@ export default defineConfig({
   },
   plugins: [
     react(),
+
     VitePWA({
       registerType: "autoUpdate",
       workbox: {
         sourcemap: true,
       },
-      devOptions: { 
+      devOptions: {
         enabled: true,
         /* other options */
       },
@@ -44,4 +45,9 @@ export default defineConfig({
       },
     }),
   ],
+  resolve: {
+    alias: {
+      "@": path.resolve(__dirname, "./src"),
+    },
+  },
 });
